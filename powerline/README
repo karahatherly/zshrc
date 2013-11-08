@@ -1,0 +1,9 @@
+To edit the prompt, modify one of the themes in ./config/themes/shell/.
+Note that changes will take effect immediately, without needing to restart the shell.
+The built-in segments are in /usr/share/.../powerline/segments/{common,shell}.py.
+Custom segments can be stored in a local directory using the paths setting in
+config.json.
+
+DOCS:
+https://powerline.readthedocs.org/en/latest/configuration.html
+https://powerline.readthedocs.org/en/latest/segments/common.html
