@@ -1,6 +1,8 @@
 # Aliases
 alias g='git'
 compdef g=git
+alias gs='git status'
+compdef _git gs=git-status
 alias gst='git status'
 compdef _git gst=git-status
 alias gd='git diff'
