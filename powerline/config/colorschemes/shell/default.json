@@ -13,6 +13,8 @@
 		"hostname": { "fg": "brightyellow", "bg": "mediumorange" },
 		"exit_fail": { "fg": "white", "bg": "darkestred" },
 		"exit_success": { "fg": "white", "bg": "darkestgreen" },
-		"environment": { "fg": "white", "bg": "darkestgreen" }
+		"environment": { "fg": "white", "bg": "darkestgreen" },
+		"date": { "fg": "gray9", "bg": "gray4" },
+		"time:divider": { "fg": "gray9", "bg": "gray4" }
 	}
 }
