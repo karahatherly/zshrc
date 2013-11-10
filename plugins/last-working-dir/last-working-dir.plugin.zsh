@@ -23,3 +23,8 @@ function lwd() {
 if [[ -z "$ZSH_LAST_WORKING_DIRECTORY" ]]; then
 	lwd 2>/dev/null && ZSH_LAST_WORKING_DIRECTORY=1 || true
 fi
+
+#clear on exit if in the folder. This allows us to use Ctrl+D as a fast way to return to $HOME.
+function zshexit(){
+    [[ -r "$cache_file" ]] && [[ "$(cat $cache_file)" == "$(pwd)" ]] && rm "$cache_file"
+}
