@@ -1,5 +1,1 @@
-if [[ -x `which nc` ]]; then
-  alias nyan='nc -v miku.acm.uiuc.edu 23' # nyan cat
-fi
-
-
+alias nyan='curl https://gist.github.com/moshen/1417991/raw/ | perl'
