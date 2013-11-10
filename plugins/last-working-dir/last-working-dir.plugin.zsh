@@ -19,8 +19,10 @@ function lwd() {
 }
 
 # Automatically jump to last working directory unless this isn't the first time
-# this plugin has been loaded.
-if [[ -z "$ZSH_LAST_WORKING_DIRECTORY" ]]; then
+# this plugin has been loaded, or we're in something that's not primarily a terminal
+local terminal_name="$(ps -hp $(ps -hp $$ -o ppid) -o comm)"
+
+if [[ -z "$ZSH_LAST_WORKING_DIRECTORY" ]] && [[ "$terminal_name" != "dolphin" ]] && [[ "$terminal_name" != "kate" ]]; then
 	lwd 2>/dev/null && ZSH_LAST_WORKING_DIRECTORY=1 || true
 fi
 
