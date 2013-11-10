@@ -11,5 +11,9 @@ if [ $commands[autojump] ]; then # check if autojump is installed
     . /opt/local/etc/profile.d/autojump.zsh
   elif [ $commands[brew] -a -f `brew --prefix`/etc/autojump.zsh ]; then # mac os x with brew
     . `brew --prefix`/etc/autojump.zsh
+  else
+      echo "Autojump script file not found"
   fi
+else
+  echo "Autojump not installed."
 fi
