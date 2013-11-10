@@ -45,6 +45,11 @@ plugins=(git git-extras autojump cp last-working-dir nyan pip python urltools wa
 
 source $ZSH/oh-my-zsh.sh
 
+#fix issues with interpreting scp, etc. paths as globs
+autoload -U url-quote-magic
+zle -N self-insert url-quote-magic
+zstyle -e :urlglobber url-other-schema '[[ $words[1] == scp ]] && reply=("*") || reply=(http https ftp)'
+
 # Load powerline (location depends on architecture)
 POWERLINE_PATH="$(pip show powerline | awk '/Location/{print $2;}')/powerline/bindings/zsh/powerline.zsh"
 TTY="$(tty | awk -F/ '{print $3;}')"
