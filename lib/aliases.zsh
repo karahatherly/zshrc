@@ -4,6 +4,9 @@ alias po='popd'
 
 # Basic directory operations
 alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
 alias -- -='cd -'
 
 # Super user
@@ -23,4 +26,8 @@ alias la='ls -A'
 alias sl=ls # often screw this up
 
 alias afind='ack-grep -il'
+alias iotop='sudo iotop'
 
+# Equo
+alias eqs='equo search'
+alias eqsh='equo match --verbose'
