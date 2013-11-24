@@ -64,3 +64,6 @@ else
 fi
 
 unset POWERLINE_PATH TTY
+
+#Android SDK path
+PATH="/home/reuben/bin/android-sdk-linux/platform-tools:${PATH}"
