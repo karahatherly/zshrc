@@ -31,4 +31,6 @@ alias iotop='sudo iotop'
 
 # Equo
 alias eqs='equo search'
+alias equ="sudo equo upgrade --ask"
 alias eqsh='equo match --verbose'
+alias spmsync="sudo equo rescue spmsync --ask"
