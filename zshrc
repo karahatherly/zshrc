@@ -51,8 +51,10 @@ zle -N self-insert url-quote-magic
 zstyle -e :urlglobber url-other-schema '[[ $words[1] == scp ]] && reply=("*") || reply=(http https ftp)'
 
 # Load powerline (location depends on architecture)
+# TODO: move this into a plugin
 POWERLINE_PATH="$(pip show powerline | awk '/Location/{print $2;}')/powerline/bindings/zsh/powerline.zsh"
 TTY="$(tty | awk -F/ '{print $3;}')"
+VIRTUAL_ENV_DISABLE_PROMPT=1    #powerline tells us what the virtualenv is, so we don't want virtualenv to change the prompt
 
 if [[ ! -r $POWERLINE_PATH ]] ; then
     echo "Powerline is not installed."
