@@ -14,6 +14,7 @@ alias _='sudo'
 alias please='sudo'
 
 #alias g='grep -in'
+alias pip-3.3="python3.3 =pip"
 
 # Show history
 alias history='fc -l 1'
