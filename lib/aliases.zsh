@@ -15,6 +15,7 @@ alias please='sudo'
 
 #alias g='grep -in'
 alias pip-3.3="python3.3 =pip"
+alias py.test="python3.3 =py.test"
 
 # Show history
 alias history='fc -l 1'
@@ -31,6 +32,7 @@ alias iotop='sudo iotop'
 
 # Equo
 alias eqs='equo search'
-alias equ="sudo equo upgrade --ask"
 alias eqsh='equo match --verbose'
+alias eqi='sudo equo install'
+alias equ="sudo equo upgrade --ask"
 alias spmsync="sudo equo rescue spmsync --ask"
