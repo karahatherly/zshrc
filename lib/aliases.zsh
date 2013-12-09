@@ -15,6 +15,7 @@ alias please='sudo'
 
 #alias g='grep -in'
 alias pip-3.3="python3.3 =pip"
+alias pip-2.7="python2.7 =pip"
 alias py.test="python3.3 =py.test"
 
 # Show history
