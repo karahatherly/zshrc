@@ -40,7 +40,7 @@
 			{
 				"name": "branch",
                 "args" : {
-                    "status_colors" : true
+                    "status_colors" : false
                 }
 			},
             {
