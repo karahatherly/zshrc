@@ -35,7 +35,7 @@ alias mtr='sudo mtr --curses'
 # Equo
 alias eqs='equo search'
 alias eqsh='equo match --verbose'
-alias eqi='sudo equo install'
-alias equ="sudo equo upgrade --ask"
+alias eqi='sudo nice equo install'
+alias equ="sudo nice equo upgrade --ask"
 alias spmsync="sudo equo rescue spmsync --ask"
 alias eqc="sudo equo conf update"
