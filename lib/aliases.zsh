@@ -39,3 +39,4 @@ alias eqi='sudo nice equo install'
 alias equ="sudo nice equo upgrade --ask"
 alias spmsync="sudo equo rescue spmsync --ask"
 alias eqc="sudo equo conf update"
+alias eqr="sudo equo remove --ask"

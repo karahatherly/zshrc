@@ -50,6 +50,8 @@ autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
 zstyle -e :urlglobber url-other-schema '[[ $words[1] == scp ]] && reply=("*") || reply=(http https ftp)'
 
+export EDITOR=/usr/bin/vim
+
 # Load powerline (location depends on architecture)
 # TODO: move this into a plugin
 POWERLINE_PATH="$(pip show powerline | awk '/Location/{print $2;}')/powerline/bindings/zsh/powerline.zsh"
