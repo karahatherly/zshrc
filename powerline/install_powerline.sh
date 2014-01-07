@@ -15,7 +15,8 @@ if [ -x /usr/bin/equo ]; then
     sudo equo install zsh dev-python/pygit2 dev-python/psutil
     sudo eselect fontconfig enable 10-powerline-symbols.conf
 elif [ -x /usr/bin/apt-get ]; then
-    sudo apt-get install zsh pygit2 psutil python-pip python2.7-dev python-psutil
+    sudo apt-get install zsh pygit2 psutil python-pip python2.7-dev python-psutil autojump
+    sudo pip install pip --upgrade
     sudo pip install pygit2
     cd /etc/fonts/conf.d
     sudo ln -s /etc/fonts.avail/10-powerline
