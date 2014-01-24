@@ -40,3 +40,6 @@ alias equ="sudo nice equo upgrade --ask"
 alias spmsync="sudo equo rescue spmsync --ask"
 alias eqc="sudo equo conf update"
 alias eqr="sudo equo remove --ask"
+alias eqf="equo query files"
+
+alias emerge="nice emerge"

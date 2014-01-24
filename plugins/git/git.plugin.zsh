@@ -83,9 +83,17 @@ alias ga='git add'
 compdef _git ga=git-add
 alias gm='git merge'
 compdef _git gm=git-merge
+alias gsh='git show'
+compdef _git gsh=git-show
 
 compdef _git grh=git-reset
 alias grh='git reset --hard'
+compdef _git gbi=git-bisect
+alias gbi='git bisect'
+compdef _git gbb=git-bisect
+alias gbb='git bisect bad'
+compdef _git gbg=git-bisect
+alias gbg='git bisect good'
 
 alias gclean='git reset --hard && git clean -dfx'
 alias gwc='git whatchanged -p --abbrev-commit --pretty=medium'
