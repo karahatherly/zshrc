@@ -34,6 +34,9 @@ alias gcm='git commit -m'
 compdef _git gcm=git-commit
 alias gcam='git commit -a -m'
 compdef _git gcam=git-commit
+alias gcf='git commit --fixup'
+compdef _git gcf=git-commit
+
 alias gco='git checkout'
 compdef _git gco=git-checkout
 alias gch='git checkout'
