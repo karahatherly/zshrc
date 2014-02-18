@@ -31,6 +31,7 @@ alias sl=ls # often screw this up
 alias afind='ack-grep -il'
 alias iotop='sudo iotop'
 alias mtr='sudo mtr --curses'
+alias dmesg='dmesg -H'
 
 # Equo
 alias eqs='equo search'
