@@ -68,9 +68,3 @@ else
 fi
 
 unset POWERLINE_PATH TTY
-
-#Android SDK path
-PATH="/home/reuben/bin/android-sdk-linux/platform-tools:${PATH}"
-
-#Haskell Cabal support
-PATH="/home/reuben/.cabal/bin:${PATH}"
