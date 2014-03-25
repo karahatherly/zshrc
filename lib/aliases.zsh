@@ -38,6 +38,7 @@ alias eqs='equo search'
 alias eqsh='equo match --verbose'
 alias eqi='sudo nice equo install'
 alias equ="sudo nice equo upgrade --ask"
+alias equp="sudo nice equo upgrade --pretend"
 alias spmsync="sudo equo rescue spmsync --ask"
 alias eqc="sudo equo conf update"
 alias eqr="sudo equo remove --ask"
