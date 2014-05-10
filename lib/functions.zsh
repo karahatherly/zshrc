@@ -15,3 +15,18 @@ function take() {
   cd $1
 }
 
+function vless() {
+    export VLESS_PAGE="less"
+    vcat "$1" "$2"
+    unset VLESS_PAGE
+}
+
+function vcat() {
+    #USAGE: vcat FILE FORMAT
+    export OUTPUT=$(tempfile)
+    export FILE_FORMAT="$2"
+    vim -u ~/.vim/tohtml "$1"
+    elinks -dump -dump-color-mode 1 -no-references $OUTPUT | ${VLESS_PAGE:-cat}
+    rm $OUTPUT
+    unset OUTPUT FILE_FORMAT
+}

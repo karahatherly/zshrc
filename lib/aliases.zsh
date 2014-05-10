@@ -46,3 +46,8 @@ alias eqf="equo query files"
 alias eqb="equo query belongs"
 
 alias emerge="nice emerge"
+
+#Vcat and Vless (see lib/functions.zsh)
+alias vc="vcat"
+alias vl="vless"
+
