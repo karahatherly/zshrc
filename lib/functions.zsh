@@ -22,8 +22,15 @@ function vless() {
 }
 
 function vcat() {
-    #USAGE: vcat FILE FORMAT
+    #USAGE: vcat [-n] FILE FORMAT
     export OUTPUT=$(tempfile)
+    export LINE_NO=0
+
+    if [[ "$1" == "-n" ]] ; then
+        export LINE_NO=1
+        shift
+    fi
+
     export FILE_FORMAT="$2"
     vim -u ~/.vim/tohtml "$1"
     elinks -dump -dump-color-mode 1 -no-references $OUTPUT | ${VLESS_PAGE:-cat}
