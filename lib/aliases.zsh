@@ -8,6 +8,7 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 alias -- -='cd -'
+alias mkcd=take
 
 # Super user
 alias _='sudo'
