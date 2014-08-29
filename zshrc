@@ -77,7 +77,7 @@ if [[ "$LAST_SNAPSHOT" == "" ]]; then
 else
     AGE=$(echo "scale=2; ($(date +%s) - $(date +%s -r ~/Backups/$LAST_SNAPSHOT)) / (60*60*24)" | bc)
 
-    if [ $(echo "$AGE > 2" | bc) ]; then
+    if [[ $(echo "$AGE > 2" | bc) == 1 ]]; then
         echo "$fg_bold[red]WARNING: Most recent snapshot is $AGE days old.$reset_color"
     fi
 fi
