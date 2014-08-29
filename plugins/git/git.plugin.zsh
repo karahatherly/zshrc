@@ -89,6 +89,10 @@ compdef _git gm=git-merge
 alias gsh='git show'
 compdef _git gsh=git-show
 
+compdef _git grs=git-reset
+alias grs='git reset --soft'
+compdef _git grm=git-reset
+alias grm='git reset --mixed'
 compdef _git grh=git-reset
 alias grh='git reset --hard'
 compdef _git gbi=git-bisect
