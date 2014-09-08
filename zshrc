@@ -70,15 +70,13 @@ fi
 unset POWERLINE_PATH TTY
 
 # Check that snapshots are working. This really shouldn't be necessary, but I've been screwed over by this too many times...
-LAST_SNAPSHOT=$(ls ~/Backups | grep '^@' | sort | tail -n 1)
-
-if [[ "$LAST_SNAPSHOT" == "" ]]; then
-    echo "$fg_bold[red]WARNING: Snapshots not found.$reset_color"
-else
-    AGE=$(echo "scale=2; ($(date +%s) - $(date +%s -r ~/Backups/$LAST_SNAPSHOT)) / (60*60*24)" | bc)
+if [[ -f ~/Backups/.last_snapshot ]]; then
+    AGE=$(echo "scale=2; ($(date +%s) - $(date +%s -r ~/Backups/.last_snapshot)) / (60*60*24)" | bc)
 
     if [[ $(echo "$AGE > 2" | bc) == 1 ]]; then
         echo "$fg_bold[red]WARNING: Most recent snapshot is $AGE days old.$reset_color"
     fi
+else
+    echo "$fg_bold[red]WARNING: Snapshots not found.$reset_color"
 fi
 
