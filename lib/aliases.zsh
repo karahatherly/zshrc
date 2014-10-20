@@ -42,7 +42,7 @@ alias equ="sudo nice equo upgrade --ask"
 alias equp="sudo nice equo upgrade --pretend"
 alias spmsync="sudo equo rescue spmsync --ask"
 alias eqc="sudo equo conf update"
-alias eqr="sudo equo remove --ask"
+alias eqr="sudo equo remove --ask --deep"
 alias eqf="equo query files"
 alias eqb="equo query belongs"
 
