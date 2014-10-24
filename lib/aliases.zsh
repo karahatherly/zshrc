@@ -33,6 +33,7 @@ alias afind='ack-grep -il'
 alias iotop='sudo iotop'
 alias mtr='sudo mtr --curses'
 alias dmesg='dmesg -H'
+alias x='xdg-open'
 
 # Equo
 alias eqs='equo search'

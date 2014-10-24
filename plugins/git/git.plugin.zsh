@@ -106,6 +106,10 @@ alias gclean='git reset --hard && git clean -dfx'
 alias gwc='git whatchanged -p --abbrev-commit --pretty=medium'
 
 alias "git-graph"='git log --graph --oneline --decorate'
+compdef _git git-graph=git-log
+
+alias gcl='git clone'
+compdef _git gcl=git-clone
 
 #remove the gf alias
 #alias gf='git ls-files | grep'
