@@ -7,7 +7,7 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 #NOTE: This is a fallback, since powerline overrides it
 ZSH_THEME="gentoo"
-#other suggestions: candy, crunch, gianu, jreese, lukerandall, nebirhos, superjarin, bira, josh, 
+#other suggestions: candy, crunch, gianu, jreese, lukerandall, nebirhos, superjarin, bira, josh
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -38,6 +38,11 @@ COMPLETION_WAITING_DOTS="true"
 # VCS as dirty. This makes repository status check for large repositories much,
 # much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Renice root shells, since we often use them when there are problems
+if [ $UID -eq 0 ]; then
+    renice -n -1 -p $$ > /dev/null
+fi
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
