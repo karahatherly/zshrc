@@ -14,7 +14,6 @@ alias mkcd=take
 alias _='sudo'
 alias please='sudo'
 
-#alias g='grep -in'
 alias pip-3.3="python3.3 =pip"
 alias pip-2.7="python2.7 =pip"
 alias py.test="python3.3 =py.test"
@@ -28,8 +27,7 @@ alias l='ls -la'
 alias ll='ls -l'
 alias la='ls -A'
 alias sl=ls # often screw this up
-
-alias afind='ack-grep -il'
+alias rgrep='grep -rn --exclude-dir=.git' #grep is ~100x faster than ack for simple regexes
 alias iotop='sudo iotop'
 alias mtr='sudo mtr --curses'
 alias dmesg='dmesg -H'
