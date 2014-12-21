@@ -37,3 +37,15 @@ function vcat() {
     rm $OUTPUT
     unset OUTPUT FILE_FORMAT
 }
+
+function ack(){
+    # function that prefers git-grep where possible, since it's faster
+
+    if git rev-parse --is-inside-work-tree &>/dev/null ; then
+        git grep -n -C 2 --heading --break $@
+    else
+        # Magic options that let less quit for output of less than one page
+        # (contents show up in scroll buffer though, so it's not a good default)
+        LESS="-RFX" ag --pager=less $@
+    fi
+}
