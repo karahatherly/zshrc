@@ -113,8 +113,8 @@ compdef _git git-graph=git-log
 alias gcl='git clone'
 compdef _git gcl=git-clone
 
-#remove the gf alias
-#alias gf='git ls-files | grep'
+alias ggrep='git grep -n --heading --break'
+compdef _git ggrep=git-grep
 
 alias gpoat='git push origin --all && git push origin --tags'
 alias gmt='git mergetool --no-prompt'
