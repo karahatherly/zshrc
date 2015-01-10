@@ -86,7 +86,7 @@ if [[ -f ~/Backups/.last_snapshot ]]; then
     if [[ $(echo "$AGE > 2" | bc) == 1 ]]; then
         echo "$fg_bold[red]WARNING: Most recent snapshot is $AGE days old.$reset_color"
     fi
-else
+elif [ $UID -ne 0 ]; then
     echo "$fg_bold[red]WARNING: Snapshots not found.$reset_color"
 fi
 
