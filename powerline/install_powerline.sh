@@ -27,8 +27,8 @@ fi
 #powerline itself
 sudo pip install git+git://github.com/Lokaltog/powerline
 
-#not enabling vim plugin cause it's broken (ironically)
-
+#change console font to one with better unicode support
+sudo sed 's/^FONT.*/FONT=eurlatgr/' /etc/vconsole.conf
 
 #Powerline settings are part of this repo, so we need to add symlink for them
 if [ ! -d ~/.config/powerline ]; then

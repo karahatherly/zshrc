@@ -63,15 +63,20 @@ POWERLINE_PATH="$(pip show powerline | awk '/Location/{print $2;}')/powerline/bi
 TTY="$(tty | awk -F/ '{print $3;}')"
 VIRTUAL_ENV_DISABLE_PROMPT=1    #powerline tells us what the virtualenv is, so we don't want virtualenv to change the prompt
 
+source /etc/vconsole.conf
 if [[ ! -r $POWERLINE_PATH ]] ; then
     echo "Powerline is not installed."
-elif [ "$TTY" != "pts" ]; then
-    # This should be disabled when not on a virtual terminal, since consoles lack unicode support
-    echo "Running on $(tty). Powerline disabled."
-else
-    source $POWERLINE_PATH
+    POWERLINE_PATH="/dev/null"
+elif [ "$TTY" != "pts" -a "$FONT" != "eurlatgr" ]; then
+    # We need a console font that supports unicode
+    echo "Running on $(tty) with unsupported font. Please edit /etc/vconsole.conf to use eurlatgr."
+    setfont eurlatgr
 fi
 
+source $POWERLINE_PATH
+
+unset FONT
+unset KEYMAP
 unset POWERLINE_PATH TTY
 
 # Check that snapshots are working. This really shouldn't be necessary, but I've been screwed over by this too many times...
