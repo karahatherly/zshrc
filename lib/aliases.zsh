@@ -51,4 +51,5 @@ alias eclog="emerge -pvl --nodeps"
 #Vcat and Vless (see lib/functions.zsh)
 alias vc="vcat"
 alias vl="vless"
+alias tcat="tail -n +0"
 
