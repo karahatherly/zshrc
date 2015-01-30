@@ -90,3 +90,6 @@ elif [ $UID -ne 0 ]; then
     echo "$fg_bold[red]WARNING: Snapshots not found.$reset_color"
 fi
 
+#Force 256 colour support (needed for tmux)
+ [[ "$TERM" == "xterm" ]] && export TERM="xterm-256color"
+
