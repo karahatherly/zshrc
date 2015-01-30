@@ -25,7 +25,7 @@ else
 fi
 
 #powerline itself
-sudo pip install git+git://github.com/Lokaltog/powerline
+sudo pip install powerline-status
 
 #change console font to one with better unicode support
 sudo sed 's/^FONT.*/FONT=eurlatgr/' /etc/vconsole.conf

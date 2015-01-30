@@ -59,7 +59,7 @@ export EDITOR=/usr/bin/vim
 
 # Load powerline (location depends on architecture)
 # TODO: move this into a plugin
-POWERLINE_PATH="$(pip show powerline | awk '/Location/{print $2;}')/powerline/bindings/zsh/powerline.zsh"
+POWERLINE_PATH="$(pip show powerline-status | awk '/Location/{print $2;}')/powerline/bindings/zsh/powerline.zsh"
 TTY="$(tty | awk -F/ '{print $3;}')"
 VIRTUAL_ENV_DISABLE_PROMPT=1    #powerline tells us what the virtualenv is, so we don't want virtualenv to change the prompt
 
