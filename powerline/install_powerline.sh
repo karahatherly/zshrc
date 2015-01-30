@@ -30,10 +30,18 @@ sudo pip install powerline-status
 #change console font to one with better unicode support
 sudo sed 's/^FONT.*/FONT=eurlatgr/' /etc/vconsole.conf
 
+DIR=$(pwd)
+
 #Powerline settings are part of this repo, so we need to add symlink for them
 if [ ! -d ~/.config/powerline ]; then
     cd ~/.config
     ln -s ~/.oh-my-zsh/powerline/config powerline
-    cd - >/dev/null
 fi
+
+if [ ! -e ~/.tmux.conf ]; then
+    cd ~
+    ln -s ~/.oh-my-zsh/tmux.conf .tmux.conf
+fi
+
+cd "$DIR"
 
