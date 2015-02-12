@@ -29,7 +29,7 @@ alias la='ls -A'
 alias sl=ls # often screw this up
 alias rgrep='grep -rn --exclude-dir=.git' #grep is ~100x faster than ack for simple regexes
 alias iotop='sudo iotop'
-alias mtr='sudo mtr --curses'
+alias mtr='mtr --curses'
 alias dmesg='dmesg -H'
 alias x='xdg-open'
 
