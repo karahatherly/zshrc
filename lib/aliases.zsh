@@ -9,6 +9,7 @@ alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 alias -- -='cd -'
 alias mkcd=take
+alias rm="rm -v --one-file-system"
 
 # Super user
 alias _='sudo'
