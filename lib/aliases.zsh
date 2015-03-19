@@ -40,6 +40,7 @@ alias eqsh='equo match --verbose'
 alias eqi='sudo nice equo install'
 alias equ="sudo nice equo upgrade --ask"
 alias equp="sudo nice equo upgrade --pretend"
+alias equk="sudo kernel-switcher switch linux-sabayon"
 alias eqc="sudo equo conf update"
 alias eqr="sudo equo remove --ask --deep"
 alias eqf="equo query files"
