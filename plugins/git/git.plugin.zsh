@@ -123,6 +123,7 @@ compdef _git gm=git-mergetool
 alias gg='git gui citool'
 alias gga='git gui citool --amend'
 alias gk='gitk --all --branches'
+alias git-detective='gitk --all --date-order $(git log -g --pretty=%H)'
 
 alias gsts='git stash show --text'
 alias gsta='git stash'
