@@ -71,7 +71,6 @@ alias gba='git branch -a'
 compdef _git gba=git-branch
 alias gcount='git shortlog -sn'
 compdef gcount=git
-alias gcl='git config --list'
 alias gcp='git cherry-pick'
 compdef _git gcp=git-cherry-pick
 alias glg='git log --stat --max-count=10'
@@ -110,7 +109,7 @@ alias gwc='git whatchanged -p --abbrev-commit --pretty=medium'
 alias "git-graph"='git log --graph --oneline --decorate'
 compdef _git git-graph=git-log
 
-alias gcl='git clone'
+alias gcl='git clone --recursive'
 compdef _git gcl=git-clone
 
 alias ggrep='git grep -n --heading --break'
