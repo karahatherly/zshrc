@@ -34,6 +34,7 @@ alias iotop='sudo iotop -o'
 alias mtr='mtr --curses'
 alias dmesg='dmesg -H'
 alias x='xdg-open'
+alias c="cat"
 alias dot-update='git -C ~/.vim pull; git -C ~/.oh-my-zsh pull'
 
 # Equo
