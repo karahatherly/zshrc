@@ -34,7 +34,7 @@ function vcat() {
     export FILE_FORMAT="$2"
     vim -u ~/.vim/tohtml "$1"
     elinks -dump -dump-color-mode 1 -no-references $OUTPUT | sed 's/ //' | ${VLESS_PAGE:-cat}
-    rm $OUTPUT
+    /bin/rm $OUTPUT
     unset OUTPUT FILE_FORMAT
 }
 
