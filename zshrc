@@ -63,6 +63,8 @@ POWERLINE_PATH="$(pip show powerline-status | awk '/Location/{print $2;}')/power
 TTY="$(tty | awk -F/ '{print $3;}')"
 VIRTUAL_ENV_DISABLE_PROMPT=1    #powerline tells us what the virtualenv is, so we don't want virtualenv to change the prompt
 
+[ ! -r $POWERLINE_PATH ] && [ -f /usr/share/zsh/site-contrib/powerline.zsh ] && POWERLINE_PATH="/usr/share/zsh/site-contrib/powerline.zsh"
+
 [ -f /etc/vconsole.conf ] && source /etc/vconsole.conf
 if [[ ! -r $POWERLINE_PATH ]] ; then
     echo "Powerline is not installed."
