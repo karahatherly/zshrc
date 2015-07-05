@@ -83,14 +83,23 @@ unset POWERLINE_PATH TTY
 
 # Check that snapshots are working. This really shouldn't be necessary, but I've been screwed over by this too many times...
 if [[ -f ~/Backups/.last_snapshot ]]; then
+    BACKUP_FILE="~/Backups/.last_snapshot"
+elif [[ -f /home/snapshots/.last_snapshot ]]; then
+    BACKUP_FILE="/home/snapshots/.last_snapshot"
+fi
+
+if [[ ! -r $BACKUP_FILE ]]; then
     AGE=$(echo "scale=2; ($(date +%s) - $(date +%s -r ~/Backups/.last_snapshot)) / (60*60*24)" | bc)
 
     if [[ $(echo "$AGE > 2" | bc) == 1 ]]; then
         echo "$fg_bold[red]WARNING: Most recent snapshot is $AGE days old.$reset_color"
     fi
-elif [ $UID -ne 0 ]; then
+
+else
     echo "$fg_bold[red]WARNING: Snapshots not found.$reset_color"
 fi
+
+unset BACKUP_FILE
 
 #Force 256 colour support (needed for tmux)
  [[ "$TERM" == "xterm" ]] && export TERM="xterm-256color"
