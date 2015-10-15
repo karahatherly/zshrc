@@ -11,3 +11,4 @@ PATH="$HOME/bin:${PATH}"
 #Aliases
 source $HOME/.oh-my-zsh/lib/aliases.zsh
 
+export TERMINAL=/usr/bin/konsole
