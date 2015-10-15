@@ -105,7 +105,7 @@ alias gbb='git bisect bad'
 compdef _git gbg=git-bisect
 alias gbg='git bisect good'
 
-alias gclean='git reset --hard && git clean -dfx'
+alias gpurge='git reset --hard && git clean -dfx'
 alias gwc='git whatchanged -p --abbrev-commit --pretty=medium'
 
 alias "git-graph"='git log --graph --oneline --decorate'
