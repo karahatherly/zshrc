@@ -40,7 +40,6 @@ alias dot-update='git -C ~/.vim pull; git -C ~/.oh-my-zsh pull'
 # Equo
 alias eqs='equo search'
 alias eqsh='equo match --verbose'
-alias eqi='sudo nice equo install'
 alias equ="sudo nice equo upgrade --ask"
 alias equp="sudo nice equo upgrade --pretend"
 alias equk="sudo kernel-switcher switch linux-sabayon"
@@ -50,6 +49,11 @@ alias eqf="equo query files"
 alias eqb="equo query belongs"
 alias spmsync="sudo equo rescue spmsync --ask"
 alias spmup='nice sudo emerge -avuNt $(equo query revisions 9999 -q)'
+
+function eqi() {
+    sudo nice equo install $@
+    rehash
+}
 
 alias emerge="nice emerge"
 alias eclog="emerge -pvl --nodeps"
