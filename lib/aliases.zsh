@@ -49,7 +49,7 @@ alias eqr="sudo equo remove --ask --deep"
 alias eqf="equo query files"
 alias eqb="equo query belongs"
 alias spmsync="sudo equo rescue spmsync --ask"
-alias spmup='nice sudo emerge -avuN $(equo query revisions 9999 -q)'
+alias spmup='nice sudo emerge -avuNt $(equo query revisions 9999 -q)'
 
 alias emerge="nice emerge"
 alias eclog="emerge -pvl --nodeps"
