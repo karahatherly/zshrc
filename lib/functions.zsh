@@ -49,3 +49,9 @@ function ack(){
         LESS="-RFX" ag --pager=less $@
     fi
 }
+
+function share-with-kooky(){
+    # function for sharing files with kooky
+    chown -Rv reuben:users $@
+    chmod -Rv g=u $@
+}
