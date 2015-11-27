@@ -55,3 +55,17 @@ function share-with-kooky(){
     chown -Rv reuben:users $@
     chmod -Rv g=u $@
 }
+
+function gcp(){
+    # function for copying local git repos while preserving remotes
+    LOCAL="$2"
+
+    git clone "$1" "$2"
+
+    if [[ -z $LOCAL ]]; then
+        LOCAL=$(basename "$1")
+    fi
+
+    cp "$1/.git/config" "$LOCAL/.git/config"
+    git -C "$LOCAL" remote add local "$1"
+}
