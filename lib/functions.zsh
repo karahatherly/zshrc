@@ -60,7 +60,7 @@ function gcp(){
     # function for copying local git repos while preserving remotes
     LOCAL="$2"
 
-    git clone "$1" "$2"
+    git clone $@
 
     if [[ -z $LOCAL ]]; then
         LOCAL=$(basename "$1")
