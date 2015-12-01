@@ -60,7 +60,8 @@ function gcp(){
     # function for copying local git repos while preserving remotes
     LOCAL="$2"
 
-    git clone $@
+    echo "WARNING: using --shared (don't rebase/delete the source repo!)"
+    git clone --shared $@
 
     if [[ -z $LOCAL ]]; then
         LOCAL=$(basename "$1")
