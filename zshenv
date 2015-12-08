@@ -3,6 +3,9 @@
 #Android SDK path
 PATH="$HOME/bin/android-sdk-linux/platform-tools:${PATH}"
 
+# Atlassian sdk
+PATH="/opt/atlassian-plugin-sdk/bin:${PATH}"
+
 #Haskell Cabal support
 PATH="$HOME/.cabal/bin:${PATH}"
 
