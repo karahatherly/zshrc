@@ -70,3 +70,21 @@ function gcp(){
     cp "$1/.git/config" "$LOCAL/.git/config"
     git -C "$LOCAL" remote add local "$1"
 }
+
+function fv(){
+    # function for finding a java class and opening it in vim
+    FILE=$(echo "$@" | awk -F: '{print $1}')
+    LINE=$(echo "$@" | awk -F: '{print $2}')
+
+    if [[ "$FILE" != *.java ]]; then
+        FILE="$FILE.java"
+    fi
+
+    FPATH=$(find . -type f -iname $FILE)
+
+    if [ "x$FPATH" = "x" ]; then
+        echo "ERROR: File not found" >&2
+    else
+        qvim "$FPATH:$LINE"
+    fi
+}
