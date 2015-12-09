@@ -35,7 +35,7 @@ alias mtr='mtr --curses'
 alias dmesg='dmesg -H'
 alias x='xdg-open'
 alias c="cat"
-alias dot-update='git -C ~/.vim pull; git -C ~/.oh-my-zsh pull'
+alias dot-update='git -C ~/.vim pull; git -C ~/.oh-my-zsh pull; git -C ~/.config/i3 pull'
 
 # Equo
 alias eqs='equo search'
