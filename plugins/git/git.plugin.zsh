@@ -131,6 +131,9 @@ alias gsta='git stash'
 alias gstp='git stash pop'
 alias gstd='git stash drop'
 
+alias gl-authors="git log --pretty=format:'%h %<(20)%an %<(40)%ae %s'"
+compdef _git gl-authors=git-log
+
 # Will cd into the top of the current repository
 # or submodule.
 alias grt='cd $(git rev-parse --show-toplevel || echo ".")'
