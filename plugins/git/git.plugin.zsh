@@ -12,6 +12,8 @@ compdef _git gdn=git-diff
 
 alias gdc='git diff --cached'
 compdef _git gdc=git-diff
+alias gdm='git diff master'
+compdef _git gdm=git-diff
 alias gl='git log'
 compdef _git gl=git-log
 alias gup='git pull --rebase'
