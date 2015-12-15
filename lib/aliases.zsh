@@ -30,6 +30,7 @@ alias la='ls -A'
 alias sl=ls # often screw this up
 alias lsblk='lsblk -o NAME,MAJ:MIN,SIZE,RO,TYPE,FSTYPE,UUID,MOUNTPOINT'
 alias rgrep='grep -rn --exclude-dir=.git' #grep is ~100x faster than ack for simple regexes
+alias agQ='ag -Q'
 alias iotop='sudo iotop -o'
 alias mtr='mtr --curses'
 alias dmesg='dmesg -H'
