@@ -105,5 +105,5 @@ unset BACKUP_FILE
  [[ "$TERM" == "xterm" ]] && export TERM="xterm-256color"
 
 # Load Jmake autocompletion
-[ -d $HOME/.jmake ] && source /home/reuben/.jmake/completion/jmake.completion.zsh
+[ -d $HOME/.jmake ] && source $HOME/.jmake/completion/jmake.completion.zsh
 
