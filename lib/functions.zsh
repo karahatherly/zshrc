@@ -67,7 +67,13 @@ function gcp(){
         LOCAL=$(basename "$1")
     fi
 
-    cp "$1/.git/config" "$LOCAL/.git/config"
+    if [ -f "$1/.git/config"  ]; then
+        cp "$1/.git/config" "$LOCAL/.git/config"
+    else
+        # assume bare repo
+        git -C "$LOCAL" remote set-url origin $(git -C "$1" remote -v | awk '/^origin/{print $2}' | head -n1)
+    fi
+
     git -C "$LOCAL" remote add local "$1"
 }
 
