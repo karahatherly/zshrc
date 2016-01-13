@@ -74,7 +74,6 @@ function gcp(){
         git -C "$LOCAL" remote set-url origin $(git -C "$1" remote -v | awk '/^origin/{print $2}' | head -n1)
     fi
 
-    git -C "$LOCAL" remote add local "$1"
 }
 
 function fv(){
