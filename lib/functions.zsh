@@ -74,6 +74,10 @@ function gcp(){
         git -C "$LOCAL" remote set-url origin $(git -C "$1" remote -v | awk '/^origin/{print $2}' | head -n1)
     fi
 
+    # if Java project, configure word diffs
+    if [ -f "$LOCAL/pom.xml" ]; then
+        echo '*.java diff=cpp' >> "$LOCAL/.git/attributes"
+    fi
 }
 
 function fv(){

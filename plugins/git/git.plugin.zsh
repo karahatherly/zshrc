@@ -7,8 +7,12 @@ alias gst='git status'
 compdef _git gst=git-status
 alias gd='git diff'
 compdef _git gd=git-diff
+alias gdw='git diff --color-words'
+compdef _git gdw=git-diff
 alias gdn='git diff --no-index --color=always'
 compdef _git gdn=git-diff
+alias gdnw='git diff --no-index --color-words --'
+compdef _git gdnw=git-diff
 
 alias gdc='git diff --cached'
 compdef _git gdc=git-diff
