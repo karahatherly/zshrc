@@ -62,6 +62,7 @@ alias eclog="emerge -pvl --nodeps"
 
 #Vcat and Vless (see lib/functions.zsh)
 alias v="vim"
+alias nv="nvim"
 alias qv="qvim"
 alias vc="vcat"
 alias vl="vless"
