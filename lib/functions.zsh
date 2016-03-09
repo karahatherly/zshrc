@@ -85,6 +85,10 @@ function fv(){
     FILE=$(echo "$@" | awk -F: '{print $1}')
     LINE=$(echo "$@" | awk -F: '{print $2}')
 
+    if [[ "x$LINE" == "x" ]]; then
+        LINE="1"
+    fi
+
     if [[ "$FILE" != *.java ]]; then
         FILE="$FILE.java"
     fi
