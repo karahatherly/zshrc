@@ -107,3 +107,6 @@ unset BACKUP_FILE
 # Load Jmake autocompletion
 [ -d $HOME/.jmake ] && source $HOME/.jmake/completion/jmake.completion.zsh
 
+# AWS CLI support
+[ -d ~/sources/awscli-saml-auth ] && source $HOME/sources/awscli-saml-auth/zshrc_additions
+

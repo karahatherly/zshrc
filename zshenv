@@ -9,7 +9,7 @@ PATH="/opt/atlassian-plugin-sdk/bin:${PATH}"
 #Haskell Cabal support
 PATH="$HOME/.cabal/bin:${PATH}"
 
-PATH="$HOME/bin:${PATH}"
+PATH="$HOME/.local/bin:$HOME/bin:${PATH}"
 
 #Aliases
 source $HOME/.oh-my-zsh/lib/aliases.zsh
