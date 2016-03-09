@@ -118,15 +118,11 @@ compdef _git git-graph=git-log
 alias gcl='git clone --recursive'
 compdef _git gcl=git-clone
 
-alias ggrep='git grep -n --heading --break'
-compdef _git ggrep=git-grep
-
 alias gpoat='git push origin --all && git push origin --tags'
 alias gmt='git mergetool --no-prompt'
 compdef _git gm=git-mergetool
 
-alias gg='git gui citool'
-alias gga='git gui citool --amend'
+alias gg='git-graph'
 alias gk='gitk --all --branches'
 alias git-detective='gitk --all --date-order $(git log -g --pretty=%H)'
 
