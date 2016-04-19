@@ -15,3 +15,5 @@ PATH="$HOME/bin:${PATH}"
 source $HOME/.oh-my-zsh/lib/aliases.zsh
 
 export TERMINAL=/usr/bin/konsole
+export QUOTING_STYLE=literal
+
