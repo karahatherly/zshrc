@@ -68,3 +68,7 @@ alias vc="vcat"
 alias vl="vless"
 alias tcat="tail -n +0"
 alias pom-grep="find . -iname pom.xml -print0 | xargs -0 -r ag"
+
+# Aliases for connecting to Postgres in a docker container (started by jmake)
+alias pg-docker="./jmake postgres docker"
+alias pgcli-docker="pgcli -h localhost -p 5433 jira jira"
