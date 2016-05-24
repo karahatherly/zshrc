@@ -55,7 +55,11 @@ autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
 zstyle -e :urlglobber url-other-schema '[[ $words[1] == scp ]] && reply=("*") || reply=(http https ftp)'
 
-export EDITOR=/usr/bin/vim
+if [ -z "$DISPLAY" ]; then
+    export EDITOR=/usr/bin/vim
+else
+    export EDITOR=/usr/bin/qvim
+fi
 
 # Load powerline (location depends on architecture)
 # TODO: move this into a plugin
