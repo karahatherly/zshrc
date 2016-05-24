@@ -81,23 +81,11 @@ function gcp(){
 }
 
 function fv(){
-    # function for finding a java class and opening it in vim
-    FILE=$(echo "$@" | awk -F: '{print $1}')
-    LINE=$(echo "$@" | awk -F: '{print $2}')
-
-    if [[ "x$LINE" == "x" ]]; then
-        LINE="1"
+    # use git for listing files if possible, for performance and convenience
+    if /usr/bin/git rev-parse --git-dir &>/dev/null ; then
+        export FZF_DEFAULT_COMMAND="/usr/bin/git ls-tree -r --name-only HEAD"
     fi
 
-    if [[ "$FILE" != *.java ]]; then
-        FILE="$FILE.java"
-    fi
-
-    FPATH=$(find . -type f -iname $FILE)
-
-    if [ "x$FPATH" = "x" ]; then
-        echo "ERROR: File not found" >&2
-    else
-        qvim "$FPATH:$LINE"
-    fi
+    $EDITOR "$(fzf)"
+    unset FZF_DEFAULT_COMMAND
 }
