@@ -68,9 +68,17 @@ function gcp(){
     fi
 
     if [ -f "$1/.git/config"  ]; then
+        echo "Copying git config"
         cp "$1/.git/config" "$LOCAL/.git/config"
+    elif [ -f "$1/config"  ]; then
+        # assume bare repo with config file
+        echo "Copying git config (bare)"
+        cp "$1/config" "$LOCAL/.git/config"
+        git -C "$LOCAL" config --unset core.bare
+        sed -i -e '/mirror = true/d' -e '/fetch =/d' "$LOCAL/.git/config"
     else
         # assume bare repo
+        echo "Copying remote"
         git -C "$LOCAL" remote set-url origin $(git -C "$1" remote -v | awk '/^origin/{print $2}' | head -n1)
     fi
 
