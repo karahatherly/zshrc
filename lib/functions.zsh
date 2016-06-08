@@ -86,6 +86,19 @@ function gcp(){
     if [ -f "$LOCAL/pom.xml" ]; then
         echo '*.java diff=cpp' >> "$LOCAL/.git/attributes"
     fi
+
+    # checkout branch if it looks like an issue
+    BRANCH=$(basename "$LOCAL")
+
+    if [[ "$BRANCH" == JVS* || "$BRANCH" == JDEV* ]] ; then
+        git -C "$LOCAL" checkout -b "issue/$BRANCH"
+
+        # this should be doable without config hackery, but I couldn't get it to work
+        git -C "$LOCAL" config --local --add branch."issue/$BRANCH".remote origin
+        git -C "$LOCAL" config --local --add branch."issue/$BRANCH".merge refs/heads/issue/$BRANCH
+    fi
+
+    cd "$LOCAL"
 }
 
 function fv(){
