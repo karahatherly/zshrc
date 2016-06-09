@@ -110,3 +110,33 @@ function fv(){
     $EDITOR "$(fzf)"
     unset FZF_DEFAULT_COMMAND
 }
+
+function gcof(){
+    SELECTION=$(git show-ref | sed 's|refs/||' | fzf)
+    HASH=$(echo "$SELECTION" | awk '{print $1}')
+    REF=$(echo "$SELECTION"  | awk '{print $2}')
+    REF_TYPE=$(echo "$REF"   | cut -d/ -f1)
+    REF_NAME=$(echo "$REF"   | cut -d/ -f2-)
+
+    if [[ "$REF_TYPE" == "remotes" ]] ; then
+        # Remote branch - need to explicitly setup tracking
+        # e.g. origin/issue/JDEV-XXXX-foo
+        REMOTE=$(echo "$REF" | cut -d/ -f2)
+        BRANCH=$(echo "$REF" | cut -d/ -f3-)
+
+        echo "$BRANCH, $REF_NAME, $REMOTE"
+        git checkout -b "$BRANCH" "$HASH"
+        git config --local --add branch."$BRANCH".remote "$REMOTE"
+        git config --local --add branch."$BRANCH".merge refs/heads/$BRANCH
+
+    elif [[ "$REF_TYPE" == "heads" ]]; then
+        git checkout "$REF_NAME"
+
+    elif [[ "$REF_TYPE" == "tags" ]]; then
+        git checkout -b "$REF_NAME" "$HASH"
+
+    else
+        echo "Unknown ref type: $REF_TYPE" >&2
+        exit 1
+    fi
+}

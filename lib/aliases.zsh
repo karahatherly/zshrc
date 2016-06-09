@@ -70,7 +70,6 @@ alias tcat="tail -n +0"
 alias pom-grep="find . -iname pom.xml -print0 | xargs -0 -r ag"
 
 # git aliases
-alias gcof='git checkout $(git branch -a | sed "s|remotes/[a-z]*/||" | fzf)'
 alias gdx='git diff --color-words=.'
 
 # Aliases for connecting to Postgres in a docker container (started by jmake)
