@@ -40,10 +40,12 @@ if [ ! -d ~/.config/powerline ]; then
     ln -s ~/.oh-my-zsh/powerline/config powerline
 fi
 
-if [ ! -e ~/.tmux.conf ]; then
-    cd ~
-    ln -s ~/.oh-my-zsh/tmux.conf .tmux.conf
-fi
+for cfg in tmux.conf tigrc ; do
+    if [ ! -e "~/.$cfg" ]; then
+        cd ~
+        ln -s "~/.oh-my-zsh/$cfg" ".$cfg"
+    fi
+done
 
 cd "$DIR"
 
