@@ -71,6 +71,7 @@ alias pom-grep="find . -iname pom.xml -print0 | xargs -0 -r ag"
 
 # git aliases
 alias gdx='git diff --color-words=.'
+alias t=tig
 
 # Aliases for connecting to Postgres in a docker container (started by jmake)
 alias pg-docker="./jmake postgres docker"
