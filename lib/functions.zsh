@@ -140,3 +140,11 @@ function gcof(){
         exit 1
     fi
 }
+
+function reinit_peripherals() {
+    numlockx on
+    xmodmap -e "remove Lock = Caps_Lock"
+    xmodmap -e "keysym Caps_Lock = Escape"
+    xmodmap -e "keysym XF86Tools = Insert"
+    echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode
+}
