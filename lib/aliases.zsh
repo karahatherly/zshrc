@@ -78,3 +78,7 @@ alias dm=dispatch-merge
 # Aliases for connecting to Postgres in a docker container (started by jmake)
 alias pg-docker="./jmake postgres docker"
 alias pgcli-docker="pgcli -h localhost -p 5433 jira jira"
+
+# Jira quick compile
+alias jqc="(cd jira-components/jira-api && mvn clean install -DskipTests && cd ../jira-core && mvn clean install -DskipTests)"
+
