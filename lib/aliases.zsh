@@ -68,6 +68,7 @@ alias vc="vcat"
 alias vl="vless"
 alias tcat="tail -n +0"
 alias pom-grep="find . -iname pom.xml -print0 | xargs -0 -r ag"
+alias plugin-grep="find . -iname atlassian-plugin.xml -print0 | xargs -0 -r ag"
 
 # git aliases
 alias gdx='git diff --color-words=.'
