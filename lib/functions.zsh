@@ -142,6 +142,9 @@ function gcof(){
 }
 
 function reinit_peripherals() {
+    # Check for missing wifi firmware
+    journalctl -b 0 -k -p warning | grep iwlwifi
+
     numlockx on
     xmodmap -e "remove Lock = Caps_Lock"
     xmodmap -e "keysym Caps_Lock = Escape"
