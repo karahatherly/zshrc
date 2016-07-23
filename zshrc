@@ -110,3 +110,5 @@ unset BACKUP_FILE
 # AWS CLI support
 [ -d ~/sources/awscli-saml-auth ] && source $HOME/sources/awscli-saml-auth/zshrc_additions
 
+# Load work key
+[ -f /media/Work/ssh-key/load.sh ] && source /media/Work/ssh-key/load.sh
