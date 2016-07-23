@@ -101,6 +101,16 @@ fi
 
 unset BACKUP_FILE
 
+
+# Rent reminder
+RENT_DIR="Archive/Flats/*39*/"
+R_EXISTS=$(echo "$RENT_DIR/$(date +%Y-%m)-"*(N) 2>/dev/null)
+if [[ $(hostname) == "phenom" && "x$R_EXISTS" == "x" ]]; then
+    echo "Reminder: you need to pay rent!"
+fi
+unset RENT_DIR
+
+
 #Force 256 colour support (needed for tmux)
  [[ "$TERM" == "xterm" ]] && export TERM="xterm-256color"
 
