@@ -134,9 +134,8 @@ alias gstd='git stash drop'
 alias gl-authors="git log --pretty=format:'%h %<(20)%an %<(40)%ae %s'"
 compdef _git gl-authors=git-log
 
-# Will cd into the top of the current repository
-# or submodule.
-alias grt='cd $(git rev-parse --show-toplevel || echo ".")'
+# Will cd into the top of the current repository or submodule.
+alias groot='cd $(git rev-parse --show-toplevel || echo ".")'
 
 # Git and svn mix
 alias git-svn-dcommit-push='git svn dcommit && git push github master:svntrunk'
@@ -192,3 +191,4 @@ function work_in_progress() {
 # these alias commit and uncomit wip branches
 alias gwip='git add -A; git ls-files --deleted -z | xargs -0 git rm; git commit -m "wip"'
 alias gunwip='git log -n 1 | grep -q -c wip && git reset HEAD~1'
+
