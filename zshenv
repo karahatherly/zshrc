@@ -1,19 +1,17 @@
-#zshrc is only executed for interactive shells, but this is always executed
+ZSH=$HOME/.zsh
 
-#Android SDK path
-PATH="$HOME/bin/android-sdk-linux/platform-tools:$HOME/bin/android-sdk-linux/build-tools/24.0.0/:${PATH}"
+# Android SDK path
+PATH="$HOME/bin/android-sdk-linux/platform-tools:${PATH}"
 
-# Atlassian sdk
-PATH="/opt/atlassian-plugin-sdk/bin:${PATH}"
-
-#Haskell Cabal support
-PATH="$HOME/.cabal/bin:${PATH}"
-
+# Local binaries
 PATH="$HOME/.local/bin:$HOME/bin:${PATH}"
 
-#Aliases
-source $HOME/.oh-my-zsh/lib/aliases.zsh
+EDITOR="$ZSH/bin/editor.sh"
+TERMINAL=/usr/bin/konsole
 
-export TERMINAL=/usr/bin/konsole
-export QUOTING_STYLE=literal
+# Fix for broken ls behaviour
+QUOTING_STYLE=literal
+
+#Force 256 colour support (needed for tmux)
+ [[ "$TERM" == "xterm" ]] && export TERM="xterm-256color"
 
