@@ -6,8 +6,8 @@ alias ..3='cd ../../..'
 alias ..4='cd ../../../..'
 alias ..5='cd ../../../../..'
 
-alias rmq="rm -rf --one-file-system"
 alias rm="rm -v --one-file-system"
+alias rmq='\rm -rf --one-file-system'
 alias cp="cp --reflink=auto"
 
 # Cat aliases
