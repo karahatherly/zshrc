@@ -11,8 +11,8 @@ alias rm="rm -v --one-file-system"
 alias cp="cp --reflink=auto"
 
 # Cat aliases
-# TODO: replace this with something faster
-# alias c="$ZSH/bin/vimcat.sh"
+# TODO: replace this with something fast enough to replace cat
+alias vc="$ZSH/bin/vimcat.sh"
 alias c=cat
 alias tcat="tail -n +0"
 
