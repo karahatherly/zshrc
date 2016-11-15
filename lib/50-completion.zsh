@@ -55,5 +55,5 @@ bindkey "^I" expand-or-complete-with-dots
 # Completions for Haskell Stack
 # TODO: move to plugin
 autoload -U +X bashcompinit && bashcompinit
-eval "$(stack --bash-completion-script stack)"
+cmd_exists stack && eval "$(stack --bash-completion-script stack)"
 
