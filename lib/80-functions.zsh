@@ -52,6 +52,7 @@ function gcp(){
     fi
 
     cd "$LOCAL"
+    git tag root
 }
 
 function fv(){
@@ -97,13 +98,3 @@ function gcof(){
     fi
 }
 
-function reinit_peripherals() {
-    # Check for missing wifi firmware
-    journalctl -b 0 -k -p warning | grep iwlwifi
-
-    numlockx on
-    xmodmap -e "remove Lock = Caps_Lock"
-    xmodmap -e "keysym Caps_Lock = Escape"
-    xmodmap -e "keysym XF86Tools = Insert"
-    echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode
-}
