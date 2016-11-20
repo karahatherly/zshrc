@@ -15,6 +15,7 @@ ln -sf $ZSH/conf/tmux.conf .tmux.conf
 ln -sf $ZSH/conf/tigrc .tigrc
 ln -sf $ZSH/zshenv .zshenv
 ln -sf $ZSH/zshenv .zprofile
+ln -sf $ZSH/zshenv .profile
 ln -sf $ZSH/zshrc .zshrc
 
 popd >/dev/null
