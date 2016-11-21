@@ -32,6 +32,7 @@ alias mtr='mtr --curses'
 alias dmesg='dmesg -H'
 alias dot-update='for i in ~/.vim ~/.oh-my-zsh ~/.config/i3 ; do test -d $i && git -C $i pull; done'
 alias parallel='parallel --citation'
+alias entr-stack='ls *cabal stack.yaml  **/*.hs | entr -c stack build'
 
 
 # Equo & Portage
