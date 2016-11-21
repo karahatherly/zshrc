@@ -9,6 +9,7 @@ PATH="$HOME/bin/android-sdk-linux/platform-tools:${PATH}"
 
 # Environment
 EDITOR="$ZSH/bin/editor.sh"
+VISUAL="$ZSH/bin/editor.sh"
 TERMINAL=/usr/bin/konsole
 
 # Fix for broken ls behaviour
