@@ -51,3 +51,6 @@ else
 fi
 # --------------------------------------------------------------------------------
 
+# Load work key
+[ -f /media/Work/ssh-key/load.sh ] && source /media/Work/ssh-key/load.sh
+
