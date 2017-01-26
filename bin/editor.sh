@@ -2,7 +2,7 @@
 
 # Helper script to correctly invoke Qvim with flag
 if [ -z "$DISPLAY" ]; then
-    /usr/bin/vim $@
+    /usr/bin/nvim $@
 else
-    /usr/bin/qvim --nofork $@
+    /usr/bin/nvim-qt $@
 fi

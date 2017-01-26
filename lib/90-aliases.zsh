@@ -56,9 +56,8 @@ function eqi() {
 alias emerge="nice emerge"
 
 # Vim aliases
-alias v="vim"
-alias nv="nvim"
-alias qv="qvim"
+alias v="nvim"
+alias qv="nvim-qt"
 
 # Git aliases
 alias t=tig
