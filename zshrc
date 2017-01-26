@@ -52,5 +52,8 @@ fi
 # --------------------------------------------------------------------------------
 
 # Load work key
-[ -f /media/Work/ssh-key/load.sh ] && source /media/Work/ssh-key/load.sh
+if [ -f /media/Work/ssh-key/load.sh ]; then
+    source /media/Work/ssh-key/load.sh
+    alias ssh='ssh -F /media/Work/ssh-key/config'
+fi
 
