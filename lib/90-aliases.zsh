@@ -85,6 +85,7 @@ alias gco='git checkout'
 alias gcom='git checkout master'
 
 alias gc='git commit -v'
+alias gcp='git commit -p'
 alias gcq='git commit'
 alias gc!='git commit -C HEAD'
 alias gcA='git commit --amend -v'
