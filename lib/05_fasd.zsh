@@ -5,6 +5,6 @@ if (cmd_exists fasd); then
     # For compatibliity with autojump
     alias j=z
 else
-    echo "Fasd is not installed" >/dev/stderr
+    echo "Fasd is not installed" >&2
 fi
 

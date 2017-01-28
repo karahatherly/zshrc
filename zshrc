@@ -19,7 +19,7 @@ if (cmd_exists antibody); then
         zsh-users/zsh-history-substring-search
 EOF
 else
-    echo "Antibody not installed" >/dev/stderr
+    echo "Antibody not installed" >&2
 fi
 
 # Load powerline
@@ -47,7 +47,7 @@ if cmd_exists powerline-hs; then
 
     unset FONT KEYMAP POWERLINE_PATH TTY
 else
-    echo "Powerline-hs not installed" >/dev/stderr
+    echo "Powerline-hs not installed" >&2
 fi
 # --------------------------------------------------------------------------------
 
