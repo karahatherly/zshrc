@@ -57,7 +57,7 @@ alias emerge="nice emerge"
 
 # Vim aliases
 alias v="nvim"
-alias qv="nvim-qt"
+function qv(){ nvim-qt $@ 2>/dev/null & }
 
 # Git aliases
 alias t=tig
