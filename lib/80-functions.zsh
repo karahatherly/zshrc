@@ -9,7 +9,7 @@ function share-with-kooky(){
     chmod -Rv g=u $@
 }
 
-function gcp(){
+function gclr(){
     # function for copying local git repos while preserving remotes
     LOCAL="$2"
 
