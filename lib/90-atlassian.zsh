@@ -28,8 +28,9 @@ alias plugin-grep="find . -iname atlassian-plugin.xml -print0 | xargs -0 -r ag"
 
 # Aliases for connecting to Postgres in a docker container (started by jmake)
 alias pg-docker="./jmake postgres docker"
+alias pg-purge='docker rm -f $(cat docker.cid)'
 alias pgcli-docker="pgcli -h localhost -p 5433 jira jira"
-alias docker-cleanup="docker rm $(docker ps -a | awk '/Exited/{print $1}')"
+alias docker-cleanup='docker rm $(docker ps -a | awk "/Exited/{print $1}")'
 
 # Aliases for starting JIRA
 alias jdbg="./jmake debug --db DOCKER"
