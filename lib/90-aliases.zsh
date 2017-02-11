@@ -33,6 +33,7 @@ alias dmesg='dmesg -H'
 alias dot-update='for i in ~/.vim ~/.zsh ~/.config/i3 ; do test -d $i && git -C $i pull && git -C $i submodule update; done'
 alias parallel='parallel --citation'
 alias entr-stack='ls *cabal stack.yaml  **/*.hs | entr -c stack build'
+alias ip='ip -c'
 
 
 # Equo & Portage
