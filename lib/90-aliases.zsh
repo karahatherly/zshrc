@@ -75,6 +75,7 @@ alias ga='git add'
 alias gsh='git show'
 alias gcl='git clone --recursive'
 alias groot='cd $(git rev-parse --show-toplevel || echo ".")'
+alias gw='git worktree'
 
 alias gbi='git bisect'
 alias gbb='git bisect bad'
