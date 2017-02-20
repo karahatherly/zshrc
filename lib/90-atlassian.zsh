@@ -33,17 +33,17 @@ alias pgcli-docker="pgcli -h localhost -p 5433 jira jira"
 alias docker-cleanup='docker rm $(docker ps -a | awk "/Exited/{print $1}")'
 
 # Aliases for starting JIRA
-alias jdbg="./jmake debug --db DOCKER"
-alias jdbg-indexprimary='./jmake debug --db DOCKER -J-Djira.instrumentation.laas=true -J-Datlassian.darkfeature.jira.issue.search.api.indexprimary.enabled=true'
-alias jdbg-dbprimary='./jmake debug --db DOCKER -J-Djira.instrumentation.laas=true -J-Datlassian.darkfeature.jira.issue.search.api.databaseprimary.enabled=true'
-alias jdbg-dbonly='./jmake debug --db DOCKER -J-Djira.instrumentation.laas=true -J-Datlassian.darkfeature.jira.issue.search.api.databaseonly.enabled=true'
-alias jdbg-vertigo="./jmake debug --db DOCKER -J-Dsearch.vertigo.mode=true"
+alias jdbg="./jmake debug --db DOCKER -J-Djira.webresource.local.caching=true"
+alias jdbg-indexprimary='jdbg -J-Djira.instrumentation.laas=true -J-Datlassian.darkfeature.jira.issue.search.api.indexprimary.enabled=true'
+alias jdbg-dbprimary='jdbg -J-Djira.instrumentation.laas=true -J-Datlassian.darkfeature.jira.issue.search.api.databaseprimary.enabled=true'
+alias jdbg-dbonly='jdbg -J-Djira.instrumentation.laas=true -J-Datlassian.darkfeature.jira.issue.search.api.databaseonly.enabled=true'
+alias jdbg-vertigo="jdbg -J-Dsearch.vertigo.mode=true"
 
-alias jqdbg="./jmake debug quickstart --db DOCKER"
-alias jqdbg-indexprimary='./jmake debug quickstart --db DOCKER -J-Djira.instrumentation.laas=true -J-Datlassian.darkfeature.jira.issue.search.api.indexprimary.enabled=true'
-alias jqdbg-dbprimary='./jmake debug quickstart --db DOCKER -J-Djira.instrumentation.laas=true -J-Datlassian.darkfeature.jira.issue.search.api.databaseprimary.enabled=true'
-alias jqdbg-dbonly='./jmake debug quickstart --db DOCKER -J-Djira.instrumentation.laas=true -J-Datlassian.darkfeature.jira.issue.search.api.databaseonly.enabled=true'
-alias jqdbg-vertigo="./jmake debug quickstart --db DOCKER -J-Dsearch.vertigo.mode=true"
+alias jqdbg="./jmake debug quickstart --db DOCKER -J-Djira.webresource.local.caching=true"
+alias jqdbg-indexprimary='jqdbg -J-Djira.instrumentation.laas=true -J-Datlassian.darkfeature.jira.issue.search.api.indexprimary.enabled=true'
+alias jqdbg-dbprimary='jqdbg -J-Djira.instrumentation.laas=true -J-Datlassian.darkfeature.jira.issue.search.api.databaseprimary.enabled=true'
+alias jqdbg-dbonly='jqdbg -J-Djira.instrumentation.laas=true -J-Datlassian.darkfeature.jira.issue.search.api.databaseonly.enabled=true'
+alias jqdbg-vertigo="jqdbg -J-Dsearch.vertigo.mode=true"
 
 function jira-prod-commits(){
     curl -sS https://version-tracker.internal.useast.atlassian.io/services/JIRA \
