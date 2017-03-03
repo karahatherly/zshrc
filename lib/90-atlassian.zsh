@@ -45,13 +45,6 @@ alias jqdbg-dbprimary='jqdbg -J-Djira.instrumentation.laas=true -J-Datlassian.da
 alias jqdbg-dbonly='jqdbg -J-Djira.instrumentation.laas=true -J-Datlassian.darkfeature.jira.issue.search.api.databaseonly.enabled=true'
 alias jqdbg-vertigo="jqdbg -J-Dsearch.vertigo.mode=true"
 
-function jira-prod-commits(){
-    curl -sS https://version-tracker.internal.useast.atlassian.io/services/JIRA \
-        | jq '.shards["jira-prod-us-1", "jira-prod-us-2"].stacks[].stack' \
-        | awk -F-- '{print $3}' \
-        | awk -F- '{print $4}'
-}
-
 # Jira quick compile
 function jqc() {
     [ ! -d target ] && mvn initialize
