@@ -34,7 +34,7 @@ alias dot-update='for i in ~/.vim ~/.zsh ~/.config/i3 ; do test -d $i && git -C 
 alias parallel='parallel --citation'
 alias entr-stack='ls *cabal stack.yaml  **/*.hs | entr -c stack build'
 alias ip='ip -c'
-
+alias shutup_and_take_my_memory='prlimit -vunlimited'
 
 # Equo & Portage
 alias eqs='equo search'
