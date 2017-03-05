@@ -4,5 +4,5 @@
 if [ -z "$DISPLAY" ]; then
     /usr/bin/nvim $@
 else
-    /usr/bin/nvim-qt $@
+    /usr/bin/nvim-qt --nofork $@
 fi
