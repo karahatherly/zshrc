@@ -33,7 +33,7 @@ alias pgcli-docker="pgcli -h localhost -p 5433 jira jira"
 alias docker-cleanup='docker rm $(docker ps -a | awk "/Exited/{print $1}")'
 
 # Aliases for starting JIRA
-alias jdbg="./jmake debug --db DOCKER -J-Djira.webresource.local.caching=true"
+alias jdbg="nice ./jmake debug --db DOCKER -J-Djira.webresource.local.caching=true"
 alias jdbg-indexprimary='jdbg -J-Djira.instrumentation.laas=true -J-Datlassian.darkfeature.jira.issue.search.api.indexprimary.enabled=true'
 alias jdbg-dbprimary='jdbg -J-Djira.instrumentation.laas=true -J-Datlassian.darkfeature.jira.issue.search.api.databaseprimary.enabled=true'
 alias jdbg-dbonly='jdbg -J-Djira.instrumentation.laas=true -J-Datlassian.darkfeature.jira.issue.search.api.databaseonly.enabled=true'
