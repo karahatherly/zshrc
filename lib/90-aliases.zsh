@@ -32,7 +32,7 @@ alias mtr='mtr --curses'
 alias dmesg='dmesg -H'
 alias dot-update='for i in ~/.vim ~/.zsh ~/.config/i3 ; do test -d $i && git -C $i pull && git -C $i submodule update; done'
 alias parallel='parallel --citation'
-alias entr-stack='ls *cabal stack.yaml  **/*.hs | entr -c stack build'
+alias sb='stack build'
 alias ip='ip -c'
 alias shutup_and_take_my_memory='prlimit -vunlimited'
 
