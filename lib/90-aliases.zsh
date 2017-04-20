@@ -64,6 +64,7 @@ alias qv="nvim-qt"
 # Git aliases
 alias t=tig
 alias dm=dispatch-merge
+alias gfzf='git ls-files | fzf'
 
 alias g='git'
 alias gs='git status'
