@@ -88,6 +88,7 @@ alias gba='git branch -a'
 
 alias gco='git checkout'
 alias gcom='git checkout master'
+alias gcop='git checkout -p'
 
 alias gc='git commit -v'
 alias gcp='git commit -pv'
