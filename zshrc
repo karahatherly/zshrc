@@ -17,6 +17,7 @@ if (cmd_exists antibody); then
         zsh-users/zsh-autosuggestions
         zsh-users/zsh-syntax-highlighting
         zsh-users/zsh-history-substring-search
+        MichaelAquilina/zsh-you-should-use
 EOF
 else
     echo "Antibody not installed" >&2
