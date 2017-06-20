@@ -18,6 +18,9 @@ QUOTING_STYLE=literal
 # This fixes xdg-open
 export KDE_SESSION_VERSION=5
 
+# Make maven less broken
+export MAVEN_OPTS="-Xmx1024m -Xms256m "
+
 #Force 256 colour support (needed for tmux)
  [[ "$TERM" == "xterm" ]] && export TERM="xterm-256color"
 
