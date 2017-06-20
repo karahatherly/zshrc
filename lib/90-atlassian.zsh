@@ -32,9 +32,12 @@ alias pg-purge='docker rm -f $(cat docker.cid)'
 alias pgcli-docker="pgcli -h localhost -p 5433 jira jira"
 alias psql-docker="psql -h localhost -p 5433 jira jira"
 alias docker-cleanup='docker rm $(docker ps -a | awk "/Exited/{print $1}")'
+alias mci='mvn clean install -DskipTests'
 
 # Aliases for starting JIRA
-alias jdbg="nice ./jmake debug --db DOCKER -J-Djira.webresource.local.caching=true"
+alias jinstall="nice ./jmake install --frontend-skip"
+
+alias jdbg="nice ./jmake debug --db DOCKER -J-Djira.webresource.local.caching=true --frontend-skip"
 alias jdbg-indexprimary='jdbg -J-Djira.instrumentation.laas=true -J-Datlassian.darkfeature.jira.issue.search.api.indexprimary.enabled=true'
 alias jdbg-dbprimary='jdbg -J-Djira.instrumentation.laas=true -J-Datlassian.darkfeature.jira.issue.search.api.databaseprimary.enabled=true'
 alias jdbg-dbonly='jdbg -J-Djira.instrumentation.laas=true -J-Datlassian.darkfeature.jira.issue.search.api.databaseonly.enabled=true'
