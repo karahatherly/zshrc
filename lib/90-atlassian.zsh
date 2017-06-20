@@ -49,6 +49,9 @@ alias jqdbg-dbprimary='jqdbg -J-Djira.instrumentation.laas=true -J-Datlassian.da
 alias jqdbg-dbonly='jqdbg -J-Djira.instrumentation.laas=true -J-Datlassian.darkfeature.jira.issue.search.api.databaseonly.enabled=true'
 alias jqdbg-vertigo="jqdbg -J-Dsearch.vertigo.mode=true"
 
+# go/build-status-in-a-shell
+alias builds='$HOME/sources/build-status-in-a-shell/cli/build-status.py --list'
+
 # Jira quick compile
 function jqc() {
     [ ! -d target ] && mvn initialize
