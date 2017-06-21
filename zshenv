@@ -21,6 +21,9 @@ export KDE_SESSION_VERSION=5
 # Make maven less broken
 export MAVEN_OPTS="-Xmx1024m -Xms256m "
 
+# Make zsh-you-should-use only show the longest matching alias
+YSU_MODE=BESTMATCH
+
 #Force 256 colour support (needed for tmux)
  [[ "$TERM" == "xterm" ]] && export TERM="xterm-256color"
 
