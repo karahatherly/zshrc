@@ -3,3 +3,19 @@ tags
 tags.lock
 tags.temp
 
+*~
+*.class
+*.swp
+*.swo
+*.log
+*.pyo
+*.pyc
+\#*.lyx#
+.ropeproject
+.directory
+.hdevtools.sock
+tags
+*.pro.user
+*#
+.ycm_extra_conf.py
+
