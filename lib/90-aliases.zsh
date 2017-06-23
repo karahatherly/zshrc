@@ -17,7 +17,6 @@ alias c=cat
 alias tcat="tail -n +0"
 
 # List direcory contents
-alias l=ls
 alias sl=ls
 alias ll='ls -lh'
 alias la='ls -A'
