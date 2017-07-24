@@ -28,6 +28,7 @@ alias plugin-grep="find . -iname atlassian-plugin.xml -print0 | xargs -0 -r ag"
 
 # Aliases for connecting to Postgres in a docker container (started by jmake)
 alias pg-docker="./jmake postgres docker"
+alias pg-docker-restart="pg-docker stop; pg-docker start $@"
 alias pg-purge='docker rm -f $(cat docker.cid)'
 alias pgcli-docker="pgcli -h localhost -p 5433 jira jira"
 alias psql-docker="psql -h localhost -p 5433 jira jira"
@@ -37,17 +38,19 @@ alias mci='mvn clean install -DskipTests'
 # Aliases for starting JIRA
 alias jinstall="nice ./jmake install --frontend-skip"
 
-alias jdbg="nice ./jmake debug --db DOCKER -J-Djira.webresource.local.caching=true --frontend-skip"
+alias jdbg="nice ./jmake debug -J-Djira.webresource.local.caching=true --frontend-skip"
 alias jdbg-indexprimary='jdbg -J-Djira.instrumentation.laas=true -J-Datlassian.darkfeature.jira.issue.search.api.indexprimary.enabled=true'
 alias jdbg-dbprimary='jdbg -J-Djira.instrumentation.laas=true -J-Datlassian.darkfeature.jira.issue.search.api.databaseprimary.enabled=true'
 alias jdbg-dbonly='jdbg -J-Djira.instrumentation.laas=true -J-Datlassian.darkfeature.jira.issue.search.api.databaseonly.enabled=true'
-alias jdbg-vertigo="jdbg -J-Dsearch.vertigo.mode=true"
+alias jdbg-search-vertigo="jdbg -J-Dsearch.vertigo.mode=true"
+alias jdbg-vertigo="nice ./jmake vertigo debug -J-Djira.webresource.local.caching=true --frontend-skip"
 
-alias jqdbg="./jmake debug quickstart --db DOCKER -J-Djira.webresource.local.caching=true"
+alias jqdbg="./jmake debug quickstart -J-Djira.webresource.local.caching=true"
 alias jqdbg-indexprimary='jqdbg -J-Djira.instrumentation.laas=true -J-Datlassian.darkfeature.jira.issue.search.api.indexprimary.enabled=true'
 alias jqdbg-dbprimary='jqdbg -J-Djira.instrumentation.laas=true -J-Datlassian.darkfeature.jira.issue.search.api.databaseprimary.enabled=true'
 alias jqdbg-dbonly='jqdbg -J-Djira.instrumentation.laas=true -J-Datlassian.darkfeature.jira.issue.search.api.databaseonly.enabled=true'
-alias jqdbg-vertigo="jqdbg -J-Dsearch.vertigo.mode=true"
+alias jqdbg-search-vertigo="jqdbg -J-Dsearch.vertigo.mode=true"
+alias jqdbg-vertigo="nice ./jmake vertigo debug quickstart -J-Djira.webresource.local.caching=true --frontend-skip"
 
 # go/build-status-in-a-shell
 alias builds='$HOME/sources/build-status-in-a-shell/cli/build-status.py --list'
