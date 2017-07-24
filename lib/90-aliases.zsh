@@ -121,7 +121,7 @@ alias gl-authors="git log --pretty=format:'%h %<(20)%an %<(40)%ae %s'"
 alias gm='git merge'
 alias gma='git merge --abort'
 alias gmt='git mergetool --no-prompt'
-alias gmm='git merge master'
+alias gmm='env GIT_EDITOR=/bin/true git merge master'
 
 alias grb='git rebase'
 alias grbi='git rebase -i'
