@@ -1,4 +1,4 @@
-This is my zshrc repo. There are many like it, but this one is mine. I use Antigen for plugin management and have assorted scripts copied from oh-my-zsh in `lib`. Here's a list of packages you should install if you want to use it:
+This is my zshrc repo. There are many like it, but this one is mine. I use Antibody for plugin management and have assorted scripts copied from oh-my-zsh in `lib`. Here's a list of packages you should install if you want to use it:
 
 * zsh
 * [antibody](https://github.com/getantibody/antibody)
