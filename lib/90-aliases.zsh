@@ -59,6 +59,7 @@ alias emerge="nice emerge"
 # Vim aliases
 alias v="nvim"
 alias qv="nvim-qt"
+alias qvdiff="nvim-qt $@ -- -d"
 
 # Git aliases
 alias t=tig
@@ -128,6 +129,7 @@ alias grbi='git rebase -i'
 alias grbc='git rebase --continue'
 alias grba='git rebase --abort'
 alias grbs='git rebase --skip'
+alias grb-show-current='git show $(cat "$(g rev-parse --git-dir)/rebase-apply/original-commit")'
 
 alias grs='git reset --soft'
 alias grm='git reset --mixed'
