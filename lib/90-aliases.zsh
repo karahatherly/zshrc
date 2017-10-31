@@ -122,6 +122,7 @@ alias gdw='git diff --color-words'
 alias gdx='git diff --color-words=.'
 
 alias gl='git log'
+alias glp='git log -p'
 alias git-graph='git log --graph --oneline --decorate'
 alias gl-authors="git log --pretty=format:'%h %<(20)%an %<(40)%ae %s'"
 
