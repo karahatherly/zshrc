@@ -32,9 +32,14 @@ alias mtr='mtr --curses'
 alias dmesg='dmesg -H'
 alias dot-update='for i in ~/.vim ~/.zsh ~/.config/i3 ; do test -d $i && git -C $i pull && git -C $i submodule update; done'
 alias parallel='parallel --citation'
-alias sb='stack build'
 alias ip='ip -c'
 alias shutup_and_take_my_memory='prlimit -vunlimited'
+
+# Stack aliases
+alias sb='nice stack build'
+alias sbt='nice stack test --no-run-tests'
+alias st='nice stack test'
+alias hoogle='nice ionice -c3 stack hoogle -- server --local -p 60080'
 
 # Equo & Portage
 alias eqs='equo search'
