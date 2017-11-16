@@ -25,7 +25,8 @@ alias la='ls -A'
 alias x='xdg-open'
 alias lsblk='lsblk -o NAME,MAJ:MIN,SIZE,RO,TYPE,FSTYPE,UUID,MOUNTPOINT'
 alias rgrep='grep -rn --exclude-dir=.git'
-alias rg="rg --colors line:fg:yellow    \
+alias rg="rg --smart-case                \
+             --colors line:fg:yellow     \
              --colors line:style:bold    \
              --colors path:fg:green      \
              --colors path:style:bold    \
