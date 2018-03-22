@@ -98,3 +98,8 @@ function gcof(){
     fi
 }
 
+function new-agent() {
+    ssh-agent > /tmp/.ssh-agent
+    source /tmp/.ssh-agent
+    ssh-add ~/.ssh/id_rsa
+}

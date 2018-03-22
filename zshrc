@@ -58,3 +58,6 @@ if [ -f /media/Work/ssh-key/load.sh ]; then
     alias ssh='ssh -F /media/Work/ssh-key/config'
 fi
 
+# If we have an agent, load it
+[ -f /tmp/.ssh-agent ] && source /tmp/.ssh-agent
+
