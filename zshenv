@@ -8,8 +8,8 @@ PATH="$HOME/.local/bin:$HOME/bin:${PATH}"
 PATH="$HOME/bin/android-sdk-linux/platform-tools:${PATH}"
 
 # Environment
-EDITOR="$ZSH/bin/editor.sh"
-VISUAL="$ZSH/bin/editor.sh"
+EDITOR="nvim"
+VISUAL="nvim"
 TERMINAL=/usr/bin/konsole
 
 # Fix for broken ls behaviour
