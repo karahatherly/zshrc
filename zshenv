@@ -18,9 +18,6 @@ QUOTING_STYLE=literal
 # This fixes xdg-open
 export KDE_SESSION_VERSION=5
 
-# Make maven less broken
-export MAVEN_OPTS="-Xmx1024m -Xms256m "
-
 # Make zsh-you-should-use only show the longest matching alias
 YSU_MODE=BESTMATCH
 
