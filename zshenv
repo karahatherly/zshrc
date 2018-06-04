@@ -24,3 +24,6 @@ YSU_MODE=BESTMATCH
 #Force 256 colour support (needed for tmux)
  [[ "$TERM" == "xterm" ]] && export TERM="xterm-256color"
 
+# Used by Jmake CI
+export JIRA_REPO=/home/reuben/jira-master
+
