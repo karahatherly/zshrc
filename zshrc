@@ -61,3 +61,6 @@ fi
 # If we have an agent, load it
 [ -f /tmp/.ssh-agent ] && source /tmp/.ssh-agent
 
+if [ -d $HOME/sources/nvm ]; then
+    source $HOME/sources/nvm/nvm.sh
+fi
