@@ -9,16 +9,14 @@
 
 # Helper function for work laptop
 function reinit_peripherals() {
-    nmcli con up "Ethernet (Atlassian)" || nmtui
+    autorandr
+
+    nmcli --ask con up "Ethernet (Atlassian)" || nmtui
 
     # Check for missing wifi firmware
     journalctl -b 0 -k -p warning | grep --color=always iwlwifi
 
     numlockx on
-    xmodmap -e "remove Lock = Caps_Lock"
-    xmodmap -e "keysym Caps_Lock = Escape"
-    xmodmap -e "keysym XF86Tools = Insert"
-    echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode
 }
 
 
