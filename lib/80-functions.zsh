@@ -63,7 +63,7 @@ function fv(){
         export FZF_DEFAULT_COMMAND="/usr/bin/git ls-tree -r --name-only HEAD"
     fi
 
-    $EDITOR "$(fzf)" &
+    $EDITOR "$(fzf)"
     unset FZF_DEFAULT_COMMAND
 }
 
