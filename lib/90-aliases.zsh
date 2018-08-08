@@ -43,6 +43,7 @@ alias dot-update='for i in ~/.vim ~/.zsh ~/.config/i3 ; do test -d $i && git -C 
 alias parallel='parallel --will-cite'
 alias ip='ip -c'
 alias shutup_and_take_my_memory='prlimit -vunlimited'
+alias virsh='virsh --connect qemu:///system'
 
 # Stack aliases
 alias sb='nice stack build'
