@@ -74,8 +74,8 @@ alias emerge="nice emerge"
 
 # Vim aliases
 alias v="nvim"
-alias qv="nvim-qt"
-alias qvdiff="nvim-qt $@ -- -d"
+alias qv="nvim-qt --no-ext-tabline"
+alias qvdiff="nvim-qt --no-ext-tabline $@ -- -d"
 
 # Git aliases
 alias t=tig
