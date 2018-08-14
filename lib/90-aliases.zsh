@@ -36,6 +36,7 @@ alias rg="rg --smart-case                \
 alias ag=rg
 alias agQ='rg -F'
 alias agJ='rg -t java'
+alias agH='rg -t haskell'
 alias iotop='sudo iotop -o'
 alias mtr='/usr/sbin/mtr --curses -d'
 alias dmesg='dmesg -H'
