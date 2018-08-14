@@ -22,3 +22,7 @@
     keepBackup = false
 [mergetool "qvimdiff"]
 	cmd = /usr/bin/qvimdiff -d -f -c 'wincmd J' "$MERGED" "$LOCAL" "$BASE" "$REMOTE"
+[url "git://anongit.kde.org/"]
+	insteadOf = kde:
+[url "git@git.kde.org:"]
+	pushInsteadOf = kde:
