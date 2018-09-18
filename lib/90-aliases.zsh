@@ -11,9 +11,7 @@ alias rmq='\rm -rf --one-file-system'
 alias cp="cp --reflink=auto"
 
 # Cat aliases
-# TODO: replace this with something fast enough to replace cat
-alias vc="$ZSH/bin/vimcat.sh"
-alias c=cat
+alias c=bat
 alias tcat="tail -n +0"
 
 # List direcory contents
