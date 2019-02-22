@@ -1,19 +1,29 @@
-#zshrc is only executed for interactive shells, but this is always executed
+ZSH=$HOME/.zsh
 
-#Android SDK path
-PATH="$HOME/bin/android-sdk-linux/platform-tools:${PATH}"
-
-# Atlassian sdk
-PATH="/opt/atlassian-plugin-sdk/bin:${PATH}"
-
-#Haskell Cabal support
-PATH="$HOME/.cabal/bin:${PATH}"
-
+# Local binaries
+# Note that PATH changes will not affect root, because this script is sourced before /etc/zsh/zprofile
 PATH="$HOME/.local/bin:$HOME/bin:${PATH}"
 
-#Aliases
-source $HOME/.oh-my-zsh/lib/aliases.zsh
+# Android SDK path
+PATH="$HOME/bin/android-sdk-linux/platform-tools:${PATH}"
 
-export TERMINAL=/usr/bin/konsole
-export QUOTING_STYLE=literal
+# Environment
+EDITOR="nvim"
+VISUAL="nvim"
+TERMINAL=/usr/bin/konsole
+
+# Fix for broken ls behaviour
+QUOTING_STYLE=literal
+
+# This fixes xdg-open
+export KDE_SESSION_VERSION=5
+
+# Make zsh-you-should-use only show the longest matching alias
+YSU_MODE=BESTMATCH
+
+#Force 256 colour support (needed for tmux)
+ [[ "$TERM" == "xterm" ]] && export TERM="xterm-256color"
+
+# Used by Jmake CI
+export JIRA_REPO=/home/reuben/jira-master
 
