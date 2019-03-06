@@ -90,6 +90,7 @@ alias gr='git remote'
 alias gf='git fetch'
 alias gft='git fetch --tags'
 alias gpl='git pull'
+alias gplr='git pull --rebase'
 alias gplm='git checkout master && git pull && git checkout -'
 alias ga='git add'
 alias gap='git add -p'
@@ -155,3 +156,6 @@ alias grh='git reset --hard'
 alias gs='git status'
 alias gss='git status -s'
 
+function gb-set-upstream() {
+    git branch --set-upstream-to=origin/$1 $1
+}
