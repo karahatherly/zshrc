@@ -4,6 +4,7 @@ ZSH=$(dirname $(realpath $0))
 pushd $ZSH >/dev/null
 
 # XDG config directories
+mkdir -p ~/.config
 cd ~/.config
 [ -d ~/.config/powerline ] || ln -sf $ZSH/conf/powerline
 [ -d ~/.config/git ] || ln -sf $ZSH/conf/git
