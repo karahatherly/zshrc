@@ -29,7 +29,13 @@ fi
 if cmd_exists powerline-hs; then
     TTY="$(tty | awk -F/ '{print $3;}')"
     # TODO: add a built-in to Powerline-hs to find this - we were using pip before but it's too slow
+    # path on Sabayon
     POWERLINE_PATH="/usr/share/zsh/site-contrib/powerline.zsh"
+
+    if [[ ! -r $POWERLINE_PATH ]] ; then
+        # path on Debian
+        POWERLINE_PATH="/usr/share/powerline/bindings/zsh/powerline.zsh"
+    fi
 
     [ -f /etc/vconsole.conf ] && source /etc/vconsole.conf
 
