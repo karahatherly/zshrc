@@ -2,7 +2,7 @@ ZSH=$HOME/.zsh
 
 # Local binaries
 # Note that PATH changes will not affect root, because this script is sourced before /etc/zsh/zprofile
-PATH="$HOME/.local/bin:$HOME/bin:${PATH}"
+PATH="$HOME/.local/bin:$HOME/.npm/bin:$HOME/bin:${PATH}"
 
 # Android SDK path
 PATH="$HOME/bin/android-sdk-linux/platform-tools:${PATH}"
@@ -25,5 +25,6 @@ YSU_MODE=BESTMATCH
  [[ "$TERM" == "xterm" ]] && export TERM="xterm-256color"
 
 # Used by Jmake CI
-export JIRA_REPO=/home/reuben/jira-master
+export JIRA_REPO=/home/kara/src/jira-master
 
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64

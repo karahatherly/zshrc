@@ -29,7 +29,7 @@ fi
 if cmd_exists powerline-hs; then
     TTY="$(tty | awk -F/ '{print $3;}')"
     # TODO: add a built-in to Powerline-hs to find this - we were using pip before but it's too slow
-    POWERLINE_PATH="/usr/share/zsh/site-contrib/powerline.zsh"
+    POWERLINE_PATH="/usr/local/share/zsh/site-functions/powerline.zsh"
 
     [ -f /etc/vconsole.conf ] && source /etc/vconsole.conf
 
@@ -64,3 +64,7 @@ fi
 if [ -d $HOME/sources/nvm ]; then
     source $HOME/sources/nvm/nvm.sh
 fi
+
+
+emulate sh -c 'source /etc/profile.d/apps-bin-path.sh'
+

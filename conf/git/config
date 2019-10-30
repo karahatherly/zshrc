@@ -1,6 +1,6 @@
 [user]
-	name = Reuben D'Netto
-	email = rdnetto@gmail.com
+	name = Kara Hatherly
+	email = khatherly@atlassian.com
 [color]
 	ui = true
 [color.grep]
@@ -23,6 +23,7 @@
 [mergetool "qvimdiff"]
 	cmd = /usr/bin/qvimdiff -d -f -c 'wincmd J' "$MERGED" "$LOCAL" "$BASE" "$REMOTE"
 [core]
+	editor = nvim
     # The pattern lets us move between files with n/N
 	pager = diff-so-fancy | less --tabs=4 -RFX
 [color "diff-highlight"]
