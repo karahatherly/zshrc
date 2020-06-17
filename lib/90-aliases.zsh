@@ -71,7 +71,8 @@ function eqi() {
     rehash
 }
 
-alias emerge="nice emerge"
+# Needed for tmux <3.1 - https://github.com/tmux/tmux/issues/142
+alias tmux='tmux -f ~/.config/tmux/tmux.conf'
 
 # Vim aliases
 alias v="nvim"
