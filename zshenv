@@ -27,3 +27,8 @@ YSU_MODE=BESTMATCH
 # Used by Jmake CI
 export JIRA_REPO=/home/reuben/jira-master
 
+# Set SWAYSOCK if unset
+if [[ -z "${SWAYSOCK-}" ]] && pgrep -x sway >/dev/null ; then
+    export SWAYSOCK="/run/user/$(id -u)/sway-ipc.$(id -u).$(pgrep -x sway).sock"
+fi
+
