@@ -25,10 +25,14 @@ YSU_MODE=BESTMATCH
  [[ "$TERM" == "xterm" ]] && export TERM="xterm-256color"
 
 # Used by Jmake CI
-export JIRA_REPO=/home/reuben/jira-master
+export JIRA_REPO="$HOME/jira-master"
 
 # Set SWAYSOCK if unset
 if [[ -z "${SWAYSOCK-}" ]] && pgrep -x sway >/dev/null ; then
     export SWAYSOCK="/run/user/$(id -u)/sway-ipc.$(id -u).$(pgrep -x sway).sock"
 fi
 
+# Set MAKEOPTS intelligently, so that we use the appropriate number of cores.
+# We use both -j and -l to handle 
+CPU_COUNT="$(lscpu -p | grep -cv '^#')"
+export MAKEOPTS="-j ${CPU_COUNT} -l ${CPU_COUNT}"
