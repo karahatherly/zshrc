@@ -55,3 +55,9 @@ function jqc() {
     popd
 }
 
+
+function bamboo_creds() {
+    CON=/etc/NetworkManager/system-connections/Charlie
+    export BAMBOO_USERNAME=$(sudo awk -F= '($1 == "identity"){print $2}' $CON)
+    export BAMBOO_PASSWORD=$(sudo awk -F= '($1 == "password"){print $2}' $CON)
+}
