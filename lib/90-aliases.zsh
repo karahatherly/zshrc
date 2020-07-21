@@ -160,7 +160,12 @@ alias gs='git status'
 alias gss='git status -s'
 
 function gb-set-upstream() {
-    git branch --set-upstream-to=origin/$1 $1
+    git branch --set-upstream-to="origin/$1" "$1"
+}
+
+function gb-default-upstream() {
+    BRANCH="$(git symbolic-ref --short HEAD)"
+    git branch --set-upstream-to="origin/$BRANCH" $BRANCH
 }
 
 # Aliases for screen sharing in Wayland
