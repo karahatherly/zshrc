@@ -21,9 +21,10 @@ function reinit_peripherals() {
 
 
 # Aliases for grepping POMs / plugin.xml
-alias pom-grep="find . -iname pom.xml -print0 | xargs -0 -r ag"
+alias pom-grep="git ls-files pom.xml '**/pom.xml' | xargs -r ag"
 alias plugin-grep="find . -iname atlassian-plugin.xml -print0 | xargs -0 -r ag"
 alias cd-migrations='cd ./jira-components/jira-core/src/main/resources/db/platform/migrations/'
+alias purge-snapshots="find ~/.m2/repository -iname 1001.0.0-SNAPSHOT -print0 | xargs -0 rm -rfv"
 
 # Aliases for connecting to Postgres in a docker container (started by jmake)
 alias pg-docker="./jmake postgres"
