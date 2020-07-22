@@ -36,3 +36,7 @@ fi
 # We use both -j and -l to handle 
 CPU_COUNT="$(lscpu -p | grep -cv '^#')"
 export MAKEOPTS="-j ${CPU_COUNT} -l ${CPU_COUNT}"
+
+# Used in sway config for host-specific configuration
+export HOST="$(hostname)"
+
