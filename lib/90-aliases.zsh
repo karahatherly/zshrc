@@ -162,3 +162,5 @@ alias gss='git status -s'
 function gb-set-upstream() {
     git branch --set-upstream-to=origin/$1 $1
 }
+
+alias enable_xwayland_screen_sharing='wf-recorder -c rawvideo -m sdl -f pipe:mirror'
