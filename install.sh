@@ -27,6 +27,3 @@ if ! [ -d ~/.local/share/konsole/Dracula.colorscheme ] ; then
     popd >/dev/null
 fi
 
-sudo layman -o 'https://ebuilds.janchren.eu/repos/rindeal/repositories.xml' -f -a rindeal
-sudo emerge -avt diff-so-fancy
-
