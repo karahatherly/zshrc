@@ -112,3 +112,11 @@ function vfio-groups() {
     done;
 }
 
+function emerge() {
+    if [ -f /mnt/portage/.empty ] && [ -z "$IGNORE_MISSING_PORTAGE_CACHE" ] ; then
+        echo "ERROR: /mnt/portage is not mounted"
+        return 1
+    else
+        /usr/bin/emerge "$@"
+    fi
+}
