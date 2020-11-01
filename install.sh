@@ -4,6 +4,16 @@ set -e
 ZSH="$(dirname "$(realpath "$0")")"
 pushd "$ZSH" >/dev/null
 
+# Make sure SSH uses TOFU (so that git clone is non-interactive)
+if [ ! -f ~/.ssh/config ]; then
+    mkdir -p ~/.ssh
+    cat <<EOF > ~/.ssh/config
+# TOFU
+Host *
+    StrictHostKeyChecking accept-new
+EOF
+fi
+
 # XDG config directories
 [ -d ~/.config ] || git clone git@github.com:rdnetto/xdg-config.git
 
