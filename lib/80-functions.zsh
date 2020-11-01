@@ -104,12 +104,14 @@ function new-agent() {
     ssh-add ~/.ssh/id_rsa
 }
 
-function vfio-groups() {
-    for d in /sys/kernel/iommu_groups/*/devices/*; do
-        n=${d#*/iommu_groups/*}; n=${n%%/*}
-        printf 'IOMMU Group %s ' "$n"
-        lspci -nns "${d##*/}"
-    done;
+# Function for using perl as grep
+function pgrep() {
+    REGEX="$1"
+    shift
+
+    # If a capture was used print its contents, else print the entire match
+    # This lets us avoid using lookahead/lookbehind assertions, one of the most common reasons for wanting perl
+    perl -lne "/$REGEX/ and print ( defined \$1 ? \$1 : $&);" "$@"
 }
 
 function emerge() {
