@@ -15,7 +15,7 @@ EOF
 fi
 
 # XDG config directories
-[ -d ~/.config ] || git clone git@github.com:rdnetto/xdg-config.git
+[ -d ~/.config ] || git clone git@github.com:rdnetto/xdg-config.git ~/.config
 
 # RC files
 cd "$HOME"
