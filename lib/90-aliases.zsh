@@ -163,4 +163,8 @@ function gb-set-upstream() {
     git branch --set-upstream-to=origin/$1 $1
 }
 
+# Aliases for screen sharing in Wayland
 alias enable_xwayland_screen_sharing='wf-recorder -c rawvideo -m sdl -f pipe:mirror'
+alias enable_v4l_screen_sharing="wf-recorder --muxer=v4l2 --codec=rawvideo --file=/dev/\$(find /sys/devices/virtual/video4linux/ -maxdepth 1 -mindepth 1 -printf '%f\\n' | head -n1) -x yuv420p"
+alias zoom='flatpak run --env=XDG_CURRENT_DESKTOP=GNOME --env=XDG_SESSION_TYPE=wayland us.zoom.Zoom'
+
