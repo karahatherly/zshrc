@@ -169,7 +169,14 @@ function gb-default-upstream() {
 }
 
 # Aliases for screen sharing in Wayland
-alias enable_xwayland_screen_sharing='wf-recorder -c rawvideo -m sdl -f pipe:mirror'
-alias enable_v4l_screen_sharing="wf-recorder --muxer=v4l2 --codec=rawvideo --file=/dev/\$(find /sys/devices/virtual/video4linux/ -maxdepth 1 -mindepth 1 -printf '%f\\n' | head -n1) -x yuv420p"
-alias zoom='flatpak run --env=XDG_CURRENT_DESKTOP=GNOME --env=XDG_SESSION_TYPE=wayland us.zoom.Zoom'
+function enable_xwayland_screen_sharing() {
+    OUTPUT="$(swaymsg -t get_outputs | jq -r '.[] | select(.model == "C27HG7x") | select (.active) | .name')"
+    wf-recorder --muxer=sdl --codec=rawvideo --file=pipe:mirror --output="$OUTPUT" "$@"
+}
+
+function enable_v4l_screen_sharing() {
+    V4L_DEV="/dev/$(find /sys/devices/virtual/video4linux/ -maxdepth 1 -mindepth 1 -printf '%f\n' | head -n1)"
+    OUTPUT="$(swaymsg -t get_outputs | jq -r '.[] | select(.model == "C27HG7x") | select (.active) | .name')"
+    wf-recorder --muxer=v4l2 --codec=rawvideo --pixel-format=yuv420p --file="$V4L_DEV" --output="$OUTPUT" "$@"
+}
 
