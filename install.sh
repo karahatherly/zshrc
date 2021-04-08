@@ -4,6 +4,12 @@ set -e
 ZSH="$(dirname "$(realpath "$0")")"
 pushd "$ZSH" >/dev/null
 
+if which apt 2>/dev/null ; then
+    sudo apt install -y fasd powerline zsh kitty-terminfo neovim
+    curl -sSfL 'https://github.com/rdnetto/powerline-hs/releases/download/v0.1.3.0/powerline-hs-Linux-v0.1.3.0.tar.xz' | sudo tar -C /usr/bin -Jx
+    curl -sSfL git.io/antibody | sh -s - -b /usr/local/bin
+fi
+
 # Make sure SSH uses TOFU (so that git clone is non-interactive)
 if [ ! -f ~/.ssh/config ]; then
     mkdir -p ~/.ssh
@@ -13,9 +19,6 @@ Host *
     StrictHostKeyChecking accept-new
 EOF
 fi
-
-# XDG config directories
-[ -d ~/.config ] || git clone git@github.com:rdnetto/xdg-config.git ~/.config
 
 # RC files
 cd "$HOME"
@@ -36,4 +39,9 @@ if ! [ -d ~/.local/share/konsole/Dracula.colorscheme ] ; then
 
     popd >/dev/null
 fi
+
+# XDG config directories
+[ -d ~/.config ] || git clone git@github.com:rdnetto/xdg-config.git ~/.config
+[ -d ~/.vim ] || git clone git@github.com:rdnetto/vimrc.git ~/.vim
+(cd ~/.vim && ./install.sh light)
 
