@@ -9,3 +9,11 @@ This is my zshrc repo. There are many like it, but this one is mine. I use Antib
 * [tig](https://github.com/jonas/tig)
 * [fzf](https://github.com/junegunn/fzf)
 
+
+# Steps for installing on Ubuntu
+
+    git clone git@github.com:rdnetto/zshrc.git ~/.zsh
+    cd ~/.zsh
+    ./install.sh
+    sudo chsh -s /bin/zsh $USER
+
