@@ -5,7 +5,8 @@ ZSH="$(dirname "$(realpath "$0")")"
 pushd "$ZSH" >/dev/null
 
 if which apt 2>/dev/null ; then
-    sudo apt install -y fasd powerline zsh kitty-terminfo neovim ripgrep tig fzf
+    # Force overwrite needed for rust packages (bat, ripgrep) on old Ubuntu releases
+    sudo apt install -y -o Dpkg::Options::="--force-overwrite" fasd powerline zsh kitty-terminfo neovim ripgrep tig fzf bat
     curl -sSfL 'https://github.com/rdnetto/powerline-hs/releases/download/v0.1.3.0/powerline-hs-Linux-v0.1.3.0.tar.xz' | sudo tar -C /usr/bin -Jx
     (cd /tmp && wget 'https://github.com/getantibody/antibody/releases/download/v6.1.1/antibody_6.1.1_linux_amd64.deb' && sudo apt install -y ./antibody*.deb)
 fi
