@@ -11,7 +11,7 @@ alias rmq='\rm -rf --one-file-system'
 alias cp="cp --reflink=auto"
 
 # Cat aliases
-if which bat 2>/dev/null ; then
+if which bat &>/dev/null ; then
     alias c=bat
 else
     # Debian-based systems
