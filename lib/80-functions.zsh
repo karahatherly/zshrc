@@ -3,12 +3,6 @@ function take() {
   cd $1
 }
 
-function share-with-kooky(){
-    # function for sharing files with kooky
-    chown -Rv reuben:users $@
-    chmod -Rv g=u $@
-}
-
 function gclr(){
     # function for copying local git repos while preserving remotes
     LOCAL="$2"
@@ -122,3 +116,14 @@ function emerge() {
         /usr/bin/emerge "$@"
     fi
 }
+
+function use_jvm11() {
+    export JAVA_HOME="/usr/lib/jvm/adoptopenjdk-11-hotspot"
+    export PATH="/usr/lib/jvm/adoptopenjdk-11-hotspot/bin:$PATH"
+}
+
+function use_graal() {
+    export JAVA_HOME="/home/renee/scratch/graalvm-ce-java8-21.2.0/"
+    export PATH="/home/renee/scratch/graalvm-ce-java8-21.2.0/bin:$PATH"
+}
+
