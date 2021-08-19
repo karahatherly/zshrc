@@ -39,6 +39,7 @@ alias docker-cleanup='docker rm $(docker ps -a | awk "/Exited/{print $1}")'
 alias mci='mvn clean install -DskipTests'
 alias mcp='mvn clean package -DskipTests'
 alias aml='atlas micros login -u rdnetto'
+alias dc='docker-compose'
 
 alias jmake_alpha='export JMAKE_VERSION=$(xpath -q -e "/project/version/text()" ~/jmake/pom.xml)'
 
