@@ -40,6 +40,7 @@ alias mci='mvn clean install -DskipTests'
 alias mcp='mvn clean package -DskipTests'
 alias aml='atlas micros login -u rdnetto'
 alias dc='docker-compose'
+alias an='atlas nebulae'
 
 alias jmake_alpha='export JMAKE_VERSION=$(xpath -q -e "/project/version/text()" ~/jmake/pom.xml)'
 
@@ -47,7 +48,7 @@ alias jmake_alpha='export JMAKE_VERSION=$(xpath -q -e "/project/version/text()" 
 alias builds='$HOME/sources/build-status-in-a-shell/cli/build-status.py --list'
 
 function ssh-aws() {
-    ssh -A -i ~/.ssh/aws-rdnetto-key/rdnetto-key.pem ubuntu@$@
+    ssh -i ~/.ssh/dea-ecs-key/dea-ecs-key.pem ec2-user@$@
 }
 
 # Jira quick compile
