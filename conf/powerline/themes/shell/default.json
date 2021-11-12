@@ -8,7 +8,8 @@
 				"function": "powerline.segments.common.net.hostname",
                 "before"  : " ",
                 "args"    : {
-                    "only_if_ssh" : true
+                    "only_if_ssh" : true,
+                    "excludeDomain": true
                 },
 				"priority": 10
 			},
