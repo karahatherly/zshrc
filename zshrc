@@ -9,7 +9,11 @@ for i in $ZSH/lib/*.zsh ; do
 done
 
 # If we have an agent, load it
-[ -f /tmp/.ssh-agent ] && source /tmp/.ssh-agent
+if [ -f /tmp/.ssh-agent ]; then
+    source /tmp/.ssh-agent
+else
+    new-agent
+fi
 
 if [ -d $HOME/sources/nvm ]; then
     source $HOME/sources/nvm/nvm.sh
