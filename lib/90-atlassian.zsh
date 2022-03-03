@@ -43,10 +43,6 @@ alias jmake_alpha='export JMAKE_VERSION=$(xpath -q -e "/project/version/text()" 
 # go/build-status-in-a-shell
 alias builds='$HOME/sources/build-status-in-a-shell/cli/build-status.py --list'
 
-function ssh-aws() {
-    ssh -i ~/.ssh/dea-ecs-key/dea-ecs-key.pem ec2-user@$@
-}
-
 function bamboo_creds() {
     CON=/etc/NetworkManager/system-connections/Charlie
     export BAMBOO_USERNAME=$(sudo awk -F= '($1 == "identity"){print $2}' $CON)
