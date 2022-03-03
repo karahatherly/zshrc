@@ -14,3 +14,8 @@ done
 if [ -d $HOME/sources/nvm ]; then
     source $HOME/sources/nvm/nvm.sh
 fi
+
+# Terraform autocompletion
+# autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/terraform terraform
+

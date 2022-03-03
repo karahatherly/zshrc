@@ -36,6 +36,7 @@ alias mcp='mvn clean package -DskipTests'
 alias aml='atlas micros login -u rdnetto'
 alias dc='docker-compose'
 alias an='atlas nebulae'
+alias tf='terraform'
 
 alias jmake_alpha='export JMAKE_VERSION=$(xpath -q -e "/project/version/text()" ~/jmake/pom.xml)'
 
