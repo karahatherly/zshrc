@@ -52,6 +52,7 @@ alias virsh='virsh --connect qemu:///system'
 
 # Stack aliases
 alias sb='nice stack build'
+alias sdb='nice stack --docker build'
 alias sbf='nice stack build --fast'
 alias sbt='nice stack test --no-run-tests'
 alias sbft='nice stack test --fast'
