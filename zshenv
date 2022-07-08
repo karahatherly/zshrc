@@ -2,7 +2,7 @@ ZSH=$HOME/.zsh
 
 # Local binaries
 # Note that PATH changes will not affect root, because this script is sourced before /etc/zsh/zprofile
-PATH="$HOME/.local/bin:$HOME/bin:${PATH}"
+PATH="$HOME/.local/bin:$HOME/bin:${PATH}:$HOME/.cargo/bin"
 
 # Android SDK path
 PATH="$HOME/bin/android-sdk-linux/platform-tools:${PATH}"
