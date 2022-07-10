@@ -10,7 +10,6 @@ PATH="$HOME/bin/android-sdk-linux/platform-tools:${PATH}"
 # Environment
 export EDITOR="nvim"
 export VISUAL="nvim"
-TERMINAL=/usr/bin/konsole
 
 # Fix for broken ls behaviour
 QUOTING_STYLE=literal
@@ -24,9 +23,6 @@ YSU_MODE=BESTMATCH
 #Force 256 colour support (needed for tmux)
  [[ "$TERM" == "xterm" ]] && export TERM="xterm-256color"
 
-# Used by Jmake CI
-export JIRA_REPO="$HOME/jira-master"
-
 # Set SWAYSOCK if unset
 if [[ -z "${SWAYSOCK-}" ]] && pgrep -x sway >/dev/null ; then
     export SWAYSOCK="/run/user/$(id -u)/sway-ipc.$(id -u).$(pgrep -x sway).sock"
@@ -39,10 +35,3 @@ export MAKEOPTS="-j ${CPU_COUNT} -l ${CPU_COUNT}"
 
 # Used in sway config for host-specific configuration
 export HOST="$(hostname)"
-
-
-# Use jenv
-if [ -d ~/.jenv/ ] ; then
-    export PATH="$HOME/.jenv/bin:$PATH"
-    eval "$(jenv init -)"
-fi

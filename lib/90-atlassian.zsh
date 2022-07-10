@@ -1,3 +1,6 @@
+# Used by Jmake CI
+export JIRA_REPO="$HOME/jira-master"
+
 # Load Jmake autocompletion
 [ -d $HOME/.jmake ] && source $HOME/.jmake/completion/jmake.completion.zsh
 
@@ -6,6 +9,12 @@
 
 # LaaS CLI support
 [ -f /usr/share/zsh/site-functions/_laas ] && source /usr/share/zsh/site-functions/_laas
+
+# Use jenv
+if [ -d ~/.jenv/ ] ; then
+    export PATH="$HOME/.jenv/bin:$PATH"
+    eval "$(jenv init -)"
+fi
 
 # Aliases for grepping POMs / plugin.xml
 alias pom-grep="git ls-files pom.xml '**/pom.xml' | xargs -r rg"
