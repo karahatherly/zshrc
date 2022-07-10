@@ -11,11 +11,13 @@ alias rmq='\rm -rf --one-file-system'
 alias cp="cp --reflink=auto"
 
 # Cat aliases
-if which bat &>/dev/null ; then
+if (cmd_exists bat) ; then
     alias c=bat
-else
-    # Debian-based systems
+# Debian-based systems
+elif (cmd_exists batcat) ; then
     alias c=batcat
+else
+    alias c=cat
 fi
 
 alias tcat="tail -n +0"
@@ -44,11 +46,12 @@ alias agH='rg -t haskell'
 alias iotop='sudo iotop -o'
 alias mtr='/usr/sbin/mtr --curses --displaymode 2'
 alias dmesg='dmesg -H'
-alias dot-update='for i in ~/.vim ~/.zsh ~/.config/i3 ; do test -d $i && git -C $i pull && git -C $i submodule update; done'
+alias dot-update='for i in ~/.vim ~/.zsh ~/.config ; do test -d $i && git -C $i pull && git -C $i submodule update; done'
 alias parallel='parallel --will-cite'
 alias ip='ip -c'
 alias shutup_and_take_my_memory='prlimit -vunlimited'
 alias virsh='virsh --connect qemu:///system'
+alias mpv='mpv --no-audio-display'
 
 # Stack aliases
 alias sb='nice stack build'
@@ -58,25 +61,6 @@ alias sbt='nice stack test --no-run-tests'
 alias sbft='nice stack test --fast'
 alias st='nice stack test'
 alias hoogle='nice ionice -c3 stack hoogle -- server --local -p 60080'
-
-# Equo & Portage
-alias eqs='equo search'
-alias eqsh='equo match --verbose'
-alias equ="sudo nice equo upgrade --ask"
-alias equp="sudo nice equo upgrade --pretend"
-alias equk="sudo kernel-switcher switch linux-sabayon"
-alias eqc="sudo dispatch-conf"
-alias eqr="sudo equo remove --ask --deep"
-alias eqf="equo query files"
-alias eqb="equo query belongs"
-alias spmsync="sudo equo rescue spmsync --ask"
-alias spmup='nice sudo emerge -avuNt $(equo query revisions 9999 -q)'
-alias mpv='mpv --no-audio-display'
-
-function eqi() {
-    sudo nice equo install $@
-    rehash
-}
 
 # Needed for tmux <3.1 - https://github.com/tmux/tmux/issues/142
 alias tmux='tmux -f ~/.config/tmux/tmux.conf'

@@ -16,7 +16,7 @@ _powerline_set_jobnum() {
 }
 
 _powerline_columns_fallback() {
-	if which stty &>/dev/null ; then
+	if (cmd_exists stty) then
 		local cols="$(stty size 2>/dev/null)"
 		if ! test -z "$cols" ; then
 			echo "${cols#* }"

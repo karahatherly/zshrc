@@ -8,7 +8,6 @@ for i in $ZSH/lib/*.zsh ; do
     source $i;
 done
 
-
 if (cmd_exists antibody); then
     source <(antibody init)
 
@@ -21,12 +20,6 @@ if (cmd_exists antibody); then
 EOF
 else
     echo "Antibody not installed" >&2
-fi
-
-# Load work key
-if [ -f /media/Work/ssh-key/load.sh ]; then
-    source /media/Work/ssh-key/load.sh
-    alias ssh='ssh -F /media/Work/ssh-key/config'
 fi
 
 # If we have an agent, load it

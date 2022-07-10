@@ -3,52 +3,6 @@ function take() {
   cd $1
 }
 
-function gclr(){
-    # function for copying local git repos while preserving remotes
-    LOCAL="$2"
-
-    echo "WARNING: using --shared (don't rebase/delete the source repo!)"
-    git clone --shared $@
-
-    if [[ -z $LOCAL ]]; then
-        LOCAL=$(basename "$1")
-    fi
-
-    if [ -f "$1/.git/config"  ]; then
-        echo "Copying git config"
-        cp "$1/.git/config" "$LOCAL/.git/config"
-    elif [ -f "$1/config"  ]; then
-        # assume bare repo with config file
-        echo "Copying git config (bare)"
-        cp "$1/config" "$LOCAL/.git/config"
-        git -C "$LOCAL" config --unset core.bare
-        sed -i -e '/mirror = true/d' -e '/fetch =/d' "$LOCAL/.git/config"
-    else
-        # assume bare repo
-        echo "Copying remote"
-        git -C "$LOCAL" remote set-url origin $(git -C "$1" remote -v | awk '/^origin/{print $2}' | head -n1)
-    fi
-
-    # if Java project, configure word diffs
-    if [ -f "$LOCAL/pom.xml" ]; then
-        echo '*.java diff=cpp' >> "$LOCAL/.git/attributes"
-    fi
-
-    # checkout branch if it looks like an issue
-    BRANCH=$(basename "$LOCAL")
-
-    if [[ "$BRANCH" == JVS* || "$BRANCH" == JDEV* ]] ; then
-        git -C "$LOCAL" checkout -b "issue/$BRANCH"
-
-        # this should be doable without config hackery, but I couldn't get it to work
-        git -C "$LOCAL" config --local --add branch."issue/$BRANCH".remote origin
-        git -C "$LOCAL" config --local --add branch."issue/$BRANCH".merge refs/heads/issue/$BRANCH
-    fi
-
-    cd "$LOCAL"
-    git tag root
-}
-
 function fv(){
     # Function for selecting a file with fzf & opening it in $EDITOR
 
@@ -106,24 +60,5 @@ function pgrep() {
     # If a capture was used print its contents, else print the entire match
     # This lets us avoid using lookahead/lookbehind assertions, one of the most common reasons for wanting perl
     perl -lne "/$REGEX/ and print ( defined \$1 ? \$1 : $&);" "$@"
-}
-
-function emerge() {
-    if [ -f /mnt/portage/.empty ] && [ -z "$IGNORE_MISSING_PORTAGE_CACHE" ] ; then
-        echo "ERROR: /mnt/portage is not mounted"
-        return 1
-    else
-        /usr/bin/emerge "$@"
-    fi
-}
-
-function use_jvm11() {
-    export JAVA_HOME="/usr/lib/jvm/adoptopenjdk-11-hotspot"
-    export PATH="/usr/lib/jvm/adoptopenjdk-11-hotspot/bin:$PATH"
-}
-
-function use_graal() {
-    export JAVA_HOME="/home/renee/scratch/graalvm-ce-java8-21.2.0/"
-    export PATH="/home/renee/scratch/graalvm-ce-java8-21.2.0/bin:$PATH"
 }
 
