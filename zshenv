@@ -36,3 +36,13 @@ export MAKEOPTS="-j ${CPU_COUNT} -l ${CPU_COUNT}"
 
 # Used in sway config for host-specific configuration
 export HOST="$(hostname)"
+
+# Use jenv
+if [ -d ~/.jenv/ ] ; then
+    export PATH="$HOME/.jenv/bin:$PATH"
+    eval "$(jenv init -)"
+fi
+
+export STAFF_ID=rdnetto
+export ATLAS_USER=rdnetto
+
