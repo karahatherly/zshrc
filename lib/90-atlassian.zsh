@@ -33,6 +33,7 @@ alias pgcli-sis='pgcli -h localhost -p 5435 postgres postgres'
 alias docker-cleanup='docker rm $(docker ps -a | awk "/Exited/{print $1}")'
 alias mci='mvn clean install -DskipTests'
 alias mcp='mvn clean package -DskipTests'
+alias am='atlas micros'
 alias aml='atlas micros login -u rdnetto'
 alias dc='docker-compose'
 alias an='atlas nebulae'
@@ -42,6 +43,13 @@ alias jmake_alpha='export JMAKE_VERSION=$(xpath -q -e "/project/version/text()" 
 
 # go/build-status-in-a-shell
 alias builds='$HOME/sources/build-status-in-a-shell/cli/build-status.py --list'
+
+function am_ssh() {
+    echo "Retrieving instance ID"
+    instance="$(atlas micros compute show -s $1 -e ddev -o json | jq -r '.WebServer.Instances[0].InstanceID')"
+    echo "Connecting"
+    atlas micros compute ssh -s "$1" -e ddev -i "$instance"
+}
 
 function bamboo_creds() {
     CON=/etc/NetworkManager/system-connections/Charlie
