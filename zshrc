@@ -8,8 +8,10 @@ for i in $ZSH/lib/*.zsh ; do
     source $i;
 done
 
-# If we have an agent, load it
-if [ -f /tmp/.ssh-agent ]; then
+# Make sure there's an agent, if we don't already have one
+if [ -n "${SSH_AUTH_SOCK:-}" ]; then
+    true
+elif [ -f /tmp/.ssh-agent ]; then
     source /tmp/.ssh-agent
 else
     new-agent
