@@ -47,7 +47,8 @@ function gcof(){
 }
 
 function new-agent() {
-    ssh-agent > /tmp/.ssh-agent
+    # Skip printing agent PID when sourcing
+    ssh-agent | grep -v ^echo > /tmp/.ssh-agent
     source /tmp/.ssh-agent
     ssh-add ~/.ssh/id_rsa
 }

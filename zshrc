@@ -13,6 +13,8 @@ if [ -n "${SSH_AUTH_SOCK:-}" ]; then
     true
 elif [ -f /tmp/.ssh-agent ]; then
     source /tmp/.ssh-agent
+    # If the agent isn't running anymore, need to restart it
+    ssh-add -l &>/dev/null || new-agent
 else
     new-agent
 fi
