@@ -35,7 +35,7 @@ alias mci='mvn clean install -DskipTests'
 alias mcp='mvn clean package -DskipTests'
 alias am='atlas micros'
 alias aml='atlas micros login -u rdnetto'
-alias dc='docker-compose'
+alias dc='docker compose'
 alias an='atlas nebulae'
 alias tf='terraform'
 
