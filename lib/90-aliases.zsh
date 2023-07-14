@@ -53,10 +53,14 @@ alias shutup_and_take_my_memory='prlimit -vunlimited'
 alias virsh='virsh --connect qemu:///system'
 alias mpv='mpv --no-audio-display'
 
-# Support using Kitty with systems that don't have the terminfo installed
-if [ "$TERM" = "xterm-kitty" ] && which kitty >/dev/null; then
-    alias ssh='kitty +kitten ssh'
-fi
+# Support using Kitty with systems that don't have the terminfo installed, but only if stdin is a tty
+function ssh() {
+    if [ -t 0 ] && [ "$TERM" = "xterm-kitty" ] && which kitty >/dev/null ; then
+        kitty +kitten ssh "$@"
+    else
+        /usr/bin/ssh "$@"
+    fi
+}
 
 # Stack aliases
 alias sb='nice stack build'
