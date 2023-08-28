@@ -43,6 +43,9 @@ if [ -d ~/.jenv/ ] ; then
     eval "$(jenv init -)"
 fi
 
+[ -d /opt/jprofiler13.0.4/ ] && export PATH="$PATH:/opt/jprofiler13.0.4/bin"
+[ -d $HOME/.jsync ] && export PATH="$HOME/.jsync/bin:$PATH"
+
 export STAFF_ID=rdnetto
 export ATLAS_USER=rdnetto
 
