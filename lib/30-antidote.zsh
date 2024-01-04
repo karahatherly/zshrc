@@ -1,9 +1,10 @@
-# Install anitbody bundles
+# Install antidote bundles
+source "$HOME/.zsh/.antidote/antidote.zsh"
 
-if (cmd_exists antibody); then
-    source <(antibody init)
+if (cmd_exists antidote); then
+    source <(antidote init)
 
-    antibody bundle <<EOF
+    antidote bundle <<EOF
         zsh-users/zsh-completions
         zsh-users/zsh-autosuggestions
         zsh-users/zsh-syntax-highlighting
@@ -11,5 +12,5 @@ if (cmd_exists antibody); then
         MichaelAquilina/zsh-you-should-use
 EOF
 else
-    echo "Antibody not installed" >&2
+    echo "Antidote not installed" >&2
 fi
