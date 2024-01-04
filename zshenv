@@ -31,8 +31,10 @@ fi
 
 # Set MAKEOPTS intelligently, so that we use the appropriate number of cores.
 # We use both -j and -l to handle 
-CPU_COUNT="$(lscpu -p | grep -cv '^#')"
-export MAKEOPTS="-j ${CPU_COUNT} -l ${CPU_COUNT}"
+if which lscpu &>/dev/null ; then
+    CPU_COUNT="$(lscpu -p | grep -cv '^#')"
+    export MAKEOPTS="-j ${CPU_COUNT} -l ${CPU_COUNT}"
+fi
 
 # Used in sway config for host-specific configuration
 export HOST="$(hostname)"
