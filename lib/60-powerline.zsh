@@ -32,29 +32,34 @@ setopt promptpercent
 setopt promptsubst
 
 # Setup prompt
-precmd_functions+=( _powerline_set_jobnum )
-typeset -g VIRTUAL_ENV_DISABLE_PROMPT=1
-local POWERLINE_COMMAND=powerline-hs
+if which powerline-hs &>/dev/null ; then
+    precmd_functions+=( _powerline_set_jobnum )
+    typeset -g VIRTUAL_ENV_DISABLE_PROMPT=1
+    local POWERLINE_COMMAND=powerline-hs
 
-local add_args='-r .zsh'
-add_args+=' --last-exit-code=$?'
-add_args+=' --last-pipe-status="$pipestatus"'
-add_args+=' --renderer-arg="client_id=$$"'
-add_args+=' --renderer-arg="shortened_path=${(%):-%~}"'
-add_args+=' --jobnum=$_POWERLINE_JOBNUM'
-add_args+=' --renderer-arg="mode=$_POWERLINE_MODE"'
-add_args+=' --renderer-arg="default_mode=$_POWERLINE_DEFAULT_MODE"'
-local new_args_2=' --renderer-arg="parser_state=${(%%):-%_}"'
-new_args_2+=' --renderer-arg="local_theme=continuation"'
-local add_args_3=$add_args' --renderer-arg="local_theme=select"'
-local add_args_2=$add_args$new_args_2
-add_args+=' --width=$(( ${COLUMNS:-$(_powerline_columns_fallback)} - ${ZLE_RPROMPT_INDENT:-1} ))'
-local add_args_r2=$add_args$new_args_2
+    local add_args='-r .zsh'
+    add_args+=' --last-exit-code=$?'
+    add_args+=' --last-pipe-status="$pipestatus"'
+    add_args+=' --renderer-arg="client_id=$$"'
+    add_args+=' --renderer-arg="shortened_path=${(%):-%~}"'
+    add_args+=' --jobnum=$_POWERLINE_JOBNUM'
+    add_args+=' --renderer-arg="mode=$_POWERLINE_MODE"'
+    add_args+=' --renderer-arg="default_mode=$_POWERLINE_DEFAULT_MODE"'
+    local new_args_2=' --renderer-arg="parser_state=${(%%):-%_}"'
+    new_args_2+=' --renderer-arg="local_theme=continuation"'
+    local add_args_3=$add_args' --renderer-arg="local_theme=select"'
+    local add_args_2=$add_args$new_args_2
+    add_args+=' --width=$(( ${COLUMNS:-$(_powerline_columns_fallback)} - ${ZLE_RPROMPT_INDENT:-1} ))'
+    local add_args_r2=$add_args$new_args_2
 
-# Set the prompts
-typeset -g PS1='$("$POWERLINE_COMMAND" $=POWERLINE_COMMAND_ARGS shell aboveleft '$add_args')'
-typeset -g RPS1='$("$POWERLINE_COMMAND" $=POWERLINE_COMMAND_ARGS shell right '$add_args')'
-typeset -g PS2='$("$POWERLINE_COMMAND" $=POWERLINE_COMMAND_ARGS shell left '$add_args_2')'
-typeset -g RPS2='$("$POWERLINE_COMMAND" $=POWERLINE_COMMAND_ARGS shell right '$add_args_r2')'
-typeset -g PS3='$("$POWERLINE_COMMAND" $=POWERLINE_COMMAND_ARGS shell left '$add_args_3')'
+    # Set the prompts
+    typeset -g PS1='$("$POWERLINE_COMMAND" $=POWERLINE_COMMAND_ARGS shell aboveleft '$add_args')'
+    typeset -g RPS1='$("$POWERLINE_COMMAND" $=POWERLINE_COMMAND_ARGS shell right '$add_args')'
+    typeset -g PS2='$("$POWERLINE_COMMAND" $=POWERLINE_COMMAND_ARGS shell left '$add_args_2')'
+    typeset -g RPS2='$("$POWERLINE_COMMAND" $=POWERLINE_COMMAND_ARGS shell right '$add_args_r2')'
+    typeset -g PS3='$("$POWERLINE_COMMAND" $=POWERLINE_COMMAND_ARGS shell left '$add_args_3')'
+
+else
+    echo "WARN: Could not find powerline-hs" >/dev/stderr
+fi
 
