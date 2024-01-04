@@ -1,11 +1,39 @@
 ZSH=$HOME/.zsh
 
-# Local binaries
-# Note that PATH changes will not affect root, because this script is sourced before /etc/zsh/zprofile
-PATH="$HOME/.local/bin:$HOME/bin:${PATH}:$HOME/.cargo/bin"
+new_path=""
+for dir (
+    # Local binaries
+    $HOME/.local/bin
+    $HOME/bin
+    $HOME/.cargo/bin
 
-# Android SDK path
-PATH="$HOME/bin/android-sdk-linux/platform-tools:${PATH}"
+    # Android SDK path
+    $HOME/bin/android-sdk-linux/platform-tools
+
+    # Homebrew
+    /opt/homebrew/bin
+
+    # Prefer GNU impls on OSX
+    /opt/homebrew/opt/coreutils/libexec/gnubin
+    /opt/homebrew/opt/gnu-tar/libexec/gnubin
+    /opt/homebrew/opt/util-linux/bin
+    /opt/homebrew/opt/util-linux/sbin
+
+    # Misc
+    $HOME/.jenv/bin
+    $HOME/.jsync/bin
+); do
+    if [ -d "$dir" ]; then
+        new_path="$new_path:$dir"
+    fi
+done
+
+export PATH="$new_path:$PATH"
+unset new_path
+
+# Misc setup
+[ ! -d ~/.jenv/ ] || eval "$(jenv init -)"
+[ ! -f /opt/homebrew/bin/brew ] || eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Environment
 export EDITOR="nvim"
@@ -38,15 +66,6 @@ fi
 
 # Used in sway config for host-specific configuration
 export HOST="$(hostname)"
-
-# Use jenv
-if [ -d ~/.jenv/ ] ; then
-    export PATH="$HOME/.jenv/bin:$PATH"
-    eval "$(jenv init -)"
-fi
-
-[ -d /opt/jprofiler13.0.4/ ] && export PATH="$PATH:/opt/jprofiler13.0.4/bin"
-[ -d $HOME/.jsync ] && export PATH="$HOME/.jsync/bin:$PATH"
 
 export STAFF_ID=rdnetto
 export ATLAS_USER=rdnetto

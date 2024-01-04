@@ -19,11 +19,7 @@ else
     new-agent
 fi
 
-if [ -d $HOME/sources/nvm ]; then
-    source $HOME/sources/nvm/nvm.sh
-fi
-
 # Terraform autocompletion
-# autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/bin/terraform terraform
-
+if which terraform &>/dev/null; then
+    complete -o nospace -C $(which terraform) terraform
+fi
