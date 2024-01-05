@@ -168,6 +168,18 @@ function gb-default-upstream() {
     git branch --set-upstream-to="origin/$BRANCH" $BRANCH
 }
 
+function git-merge-containing() {
+    # assuming HEAD is master
+    git rev-list --merges --ancestry-path --format="%H %P" $1..HEAD | tac | while read -r merge parent1 parent2; do
+        if [ "$parent2" != "" ]; then
+            if git merge-base --is-ancestor $1 $merge && ! git merge-base --is-ancestor $1 $parent1; then
+                echo "$merge"
+                break
+            fi
+        fi
+    done
+}
+
 # Aliases for screen sharing in Wayland
 function enable_xwayland_screen_sharing() {
     OUTPUT="$(swaymsg -t get_outputs | jq -r '.[] | select(.model == "C27HG7x") | select (.active) | .name')"
