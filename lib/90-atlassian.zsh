@@ -1,5 +1,5 @@
 # Used by Jmake CI
-export JIRA_REPO="$HOME/jira-master"
+export JIRA_REPO="$HOME/sources/jira"
 
 # Load Jmake autocompletion
 [ -d $HOME/.jmake ] && source $HOME/.jmake/completion/jmake.completion.zsh
