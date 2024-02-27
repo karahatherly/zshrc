@@ -15,6 +15,10 @@ for dir (
 
     # Prefer GNU impls on OSX
     /opt/homebrew/opt/coreutils/libexec/gnubin
+    /opt/homebrew/opt/findutils/libexec/gnubin
+    /opt/homebrew/opt/gawk/libexec/gnubin
+    /opt/homebrew/opt/grep/libexec/gnubin
+    /opt/homebrew/opt/gnu-sed/libexec/gnubin
     /opt/homebrew/opt/gnu-tar/libexec/gnubin
     /opt/homebrew/opt/util-linux/bin
     /opt/homebrew/opt/util-linux/sbin
