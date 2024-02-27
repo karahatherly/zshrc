@@ -38,7 +38,7 @@ unset new_path
 # Environment
 export EDITOR="nvim"
 export VISUAL="nvim"
-TERMINAL=/usr/bin/kitty
+TERMINAL=$(which kitty)
 
 # Fix for broken ls behaviour
 QUOTING_STYLE=literal

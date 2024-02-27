@@ -7,8 +7,8 @@ function fv(){
     # Function for selecting a file with fzf & opening it in $EDITOR
 
     # use git for listing files if possible, for performance and convenience
-    if /usr/bin/git rev-parse --git-dir &>/dev/null ; then
-        export FZF_DEFAULT_COMMAND="/usr/bin/git ls-tree -r --name-only HEAD"
+    if git rev-parse --git-dir &>/dev/null ; then
+        export FZF_DEFAULT_COMMAND="git ls-tree -r --name-only HEAD"
     fi
 
     $EDITOR "$(fzf)"

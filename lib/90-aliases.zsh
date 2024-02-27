@@ -44,7 +44,7 @@ alias agQ='rg -F'
 alias agJ='rg -t java'
 alias agH='rg -t haskell'
 alias iotop='sudo iotop -o'
-alias mtr='/usr/sbin/mtr --curses --displaymode 2'
+alias mtr='mtr --curses --displaymode 2'
 alias dmesg='dmesg -H'
 alias dot-update='for i in ~/.vim ~/.zsh ~/.config ; do test -d $i && git -C $i pull && git -C $i submodule update; done'
 alias parallel='parallel --will-cite'
@@ -58,7 +58,7 @@ function ssh() {
     if [ -t 0 ] && [ "$TERM" = "xterm-kitty" ] && which kitty >/dev/null ; then
         kitty +kitten ssh "$@"
     else
-        /usr/bin/ssh "$@"
+        ssh "$@"
     fi
 }
 
@@ -92,9 +92,9 @@ alias gpf='git push --force-with-lease'
 alias gr='git remote'
 alias gf='git fetch'
 alias gft='git fetch --tags'
-alias gpl='git pull'
-alias gplr='git pull --rebase'
-alias gplm='git checkout master && git pull && git checkout -'
+alias gpl='git pull --prune'
+alias gplr='git pull --prune --rebase'
+alias gplm='git checkout master && git pull --prune && git checkout -'
 alias ga='git add'
 alias gap='git add -p'
 alias gsh='git show'
@@ -116,7 +116,7 @@ alias gcop='git checkout -p'
 alias gc='git commit -v'
 alias gcp='git commit -pv'
 alias gcq='git commit'
-alias gc!='env GIT_EDITOR=/bin/true git commit'
+alias gc!='git commit --no-edit'
 alias gcA='git commit --amend -v'
 alias gcA!='git commit --amend -C HEAD'
 alias gca='git commit -v -a'
@@ -143,7 +143,7 @@ alias gl-authors="git log --pretty=format:'%h %<(20)%an %<(40)%ae %s'"
 alias gm='git merge'
 alias gma='git merge --abort'
 alias gmt='git mergetool --no-prompt'
-alias gmm='env GIT_EDITOR=/bin/true git merge master'
+alias gmm='git merge master --no-edit'
 
 alias grb='git rebase'
 alias grbi='git rebase -i'
