@@ -28,7 +28,12 @@ alias ll='ls -lh'
 alias la='ls -A'
 
 # Misc commands
-alias x='xdg-open'
+if [ "$(uname -o)" = "Darwin" ]; then
+    alias x='open'
+else
+    alias x='xdg-open'
+fi
+
 alias lsblk='lsblk -o NAME,MAJ:MIN,SIZE,RO,TYPE,FSTYPE,UUID,MOUNTPOINT'
 alias rgrep='grep -rn --exclude-dir=.git'
 alias rg="rg --smart-case                \
