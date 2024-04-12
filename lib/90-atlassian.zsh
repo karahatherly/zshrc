@@ -40,7 +40,7 @@ alias adr='atlas devenv remote'
 alias dc='docker compose'
 alias tf='terraform'
 
-alias jmake_alpha='export JMAKE_VERSION=$(xpath -q -e "/project/version/text()" ~/jmake/pom.xml)'
+alias jmake_alpha='export JMAKE_VERSION=$(xpath -q -e "/project/version/text()" ~/sources/jmake/pom.xml)'
 
 # go/build-status-in-a-shell
 alias builds='$HOME/sources/build-status-in-a-shell/cli/build-status.py --list'
