@@ -57,3 +57,10 @@ function bamboo_creds() {
     export BAMBOO_USERNAME=$(sudo awk -F= '($1 == "identity"){print $2}' $CON)
     export BAMBOO_PASSWORD=$(sudo awk -F= '($1 == "password"){print $2}' $CON)
 }
+
+function jira_ci() {
+    branch="$(git rev-parse --abbrev-ref HEAD)"
+    encoded_branch="$(python3 -c "import urllib.parse; print(urllib.parse.quote('$branch', safe=''))")"
+    echo "https://bitbucket.org/jira-cloud-cicd/jira/pipelines/results/branch/$encoded_branch/page/1"
+    open "https://bitbucket.org/jira-cloud-cicd/jira/pipelines/results/branch/$encoded_branch/page/1"
+}
