@@ -60,10 +60,17 @@ alias mpv='mpv --no-audio-display'
 
 # Support using Kitty with systems that don't have the terminfo installed, but only if stdin is a tty
 function ssh() {
-    if [ -t 0 ] && [ "$TERM" = "xterm-kitty" ] && which kitty >/dev/null ; then
-        kitty +kitten ssh "$@"
+    # Prevent OSX from disrupting the session
+    if which caffeinate >/dev/null ; then
+        CAF=(caffeinate -i)
     else
-        ssh "$@"
+        CAF=()
+    fi
+
+    if [ -t 0 ] && [ "$TERM" = "xterm-kitty" ] && which kitty >/dev/null ; then
+        $CAF kitty +kitten ssh "$@"
+    else
+        $CAF ssh "$@"
     fi
 }
 
