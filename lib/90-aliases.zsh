@@ -171,6 +171,11 @@ alias grh='git reset --hard'
 alias gs='git status'
 alias gss='git status -s'
 
+function gfco() {
+    git fetch origin "$1"
+    git checkout "$1"
+}
+
 function gb-set-upstream() {
     git branch --set-upstream-to="origin/$1" "$1"
 }
