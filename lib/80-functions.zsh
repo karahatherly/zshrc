@@ -6,13 +6,14 @@ function take() {
 function fv(){
     # Function for selecting a file with fzf & opening it in $EDITOR
 
-    # use git for listing files if possible, for performance and convenience
+    # Use git for listing files if possible, for performance and convenience
+    # git ls-files is fast but only shows tracked files, so use `git clean -n` to get untracked files
+    # This is faster to show the files we're more likely to care about than a single command
     if git rev-parse --git-dir &>/dev/null ; then
-        export FZF_DEFAULT_COMMAND="git ls-tree -r --name-only HEAD"
+        $EDITOR "$(env FZF_DEFAULT_COMMAND="git ls-files; git clean -n | sed 's/^Would remove //'" fzf)"
+    else
+        $EDITOR "$(fzf)"
     fi
-
-    $EDITOR "$(fzf)"
-    unset FZF_DEFAULT_COMMAND
 }
 
 function gcof(){
