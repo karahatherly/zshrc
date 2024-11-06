@@ -64,3 +64,7 @@ function jira_ci() {
     echo "https://bitbucket.org/jira-cloud-cicd/jira/pipelines/results/branch/$encoded_branch/page/1"
     open "https://bitbucket.org/jira-cloud-cicd/jira/pipelines/results/branch/$encoded_branch/page/1"
 }
+
+function get_network-segment() {
+    atlas slauth curl -a cna-mns-mat -e prod -- "https://cna-mns-mat.ap-southeast-2.prod.atl-paas.net/api/v1/get_current_segment/$1" | jq .
+}
