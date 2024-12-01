@@ -58,6 +58,7 @@ alias shutup_and_take_my_memory='prlimit -vunlimited'
 alias virsh='virsh --connect qemu:///system'
 alias mpv='mpv --no-audio-display'
 alias jmtpfs='echo "Just use adb, its 40x faster"; false'
+alias android_vnc=scrcpy
 
 # Support using Kitty with systems that don't have the terminfo installed, but only if stdin is a tty
 function ssh() {
