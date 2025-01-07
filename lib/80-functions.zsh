@@ -3,68 +3,17 @@ function take() {
   cd $1
 }
 
-function share-with-kooky(){
-    # function for sharing files with kooky
-    chown -Rv reuben:users $@
-    chmod -Rv g=u $@
-}
-
-function gclr(){
-    # function for copying local git repos while preserving remotes
-    LOCAL="$2"
-
-    echo "WARNING: using --shared (don't rebase/delete the source repo!)"
-    git clone --shared $@
-
-    if [[ -z $LOCAL ]]; then
-        LOCAL=$(basename "$1")
-    fi
-
-    if [ -f "$1/.git/config"  ]; then
-        echo "Copying git config"
-        cp "$1/.git/config" "$LOCAL/.git/config"
-    elif [ -f "$1/config"  ]; then
-        # assume bare repo with config file
-        echo "Copying git config (bare)"
-        cp "$1/config" "$LOCAL/.git/config"
-        git -C "$LOCAL" config --unset core.bare
-        sed -i -e '/mirror = true/d' -e '/fetch =/d' "$LOCAL/.git/config"
-    else
-        # assume bare repo
-        echo "Copying remote"
-        git -C "$LOCAL" remote set-url origin $(git -C "$1" remote -v | awk '/^origin/{print $2}' | head -n1)
-    fi
-
-    # if Java project, configure word diffs
-    if [ -f "$LOCAL/pom.xml" ]; then
-        echo '*.java diff=cpp' >> "$LOCAL/.git/attributes"
-    fi
-
-    # checkout branch if it looks like an issue
-    BRANCH=$(basename "$LOCAL")
-
-    if [[ "$BRANCH" == JVS* || "$BRANCH" == JDEV* ]] ; then
-        git -C "$LOCAL" checkout -b "issue/$BRANCH"
-
-        # this should be doable without config hackery, but I couldn't get it to work
-        git -C "$LOCAL" config --local --add branch."issue/$BRANCH".remote origin
-        git -C "$LOCAL" config --local --add branch."issue/$BRANCH".merge refs/heads/issue/$BRANCH
-    fi
-
-    cd "$LOCAL"
-    git tag root
-}
-
 function fv(){
     # Function for selecting a file with fzf & opening it in $EDITOR
 
-    # use git for listing files if possible, for performance and convenience
-    if /usr/bin/git rev-parse --git-dir &>/dev/null ; then
-        export FZF_DEFAULT_COMMAND="/usr/bin/git ls-tree -r --name-only HEAD"
+    # Use git for listing files if possible, for performance and convenience
+    # git ls-files is fast but only shows tracked files, so use `git clean -n` to get untracked files
+    # This is faster to show the files we're more likely to care about than a single command
+    if git rev-parse --git-dir &>/dev/null ; then
+        $EDITOR "$(env FZF_DEFAULT_COMMAND="git ls-files; git clean -n | sed 's/^Would remove //'" fzf)"
+    else
+        $EDITOR "$(fzf)"
     fi
-
-    $EDITOR "$(fzf)"
-    unset FZF_DEFAULT_COMMAND
 }
 
 function gcof(){
@@ -99,16 +48,19 @@ function gcof(){
 }
 
 function new-agent() {
-    ssh-agent > /tmp/.ssh-agent
+    # Skip printing agent PID when sourcing
+    ssh-agent | grep -v ^echo > /tmp/.ssh-agent
     source /tmp/.ssh-agent
     ssh-add ~/.ssh/id_rsa
 }
 
-function vfio-groups() {
-    for d in /sys/kernel/iommu_groups/*/devices/*; do
-        n=${d#*/iommu_groups/*}; n=${n%%/*}
-        printf 'IOMMU Group %s ' "$n"
-        lspci -nns "${d##*/}"
-    done;
+# Function for using perl as grep
+function pgrep() {
+    REGEX="$1"
+    shift
+
+    # If a capture was used print its contents, else print the entire match
+    # This lets us avoid using lookahead/lookbehind assertions, one of the most common reasons for wanting perl
+    perl -lne "/$REGEX/ and print ( defined \$1 ? \$1 : $&);" "$@"
 }
 

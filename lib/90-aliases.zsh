@@ -11,7 +11,15 @@ alias rmq='\rm -rf --one-file-system'
 alias cp="cp --reflink=auto"
 
 # Cat aliases
-alias c=bat
+if (cmd_exists bat) ; then
+    alias c=bat
+# Debian-based systems
+elif (cmd_exists batcat) ; then
+    alias c=batcat
+else
+    alias c=cat
+fi
+
 alias tcat="tail -n +0"
 
 # List direcory contents
@@ -20,7 +28,12 @@ alias ll='ls -lh'
 alias la='ls -A'
 
 # Misc commands
-alias x='xdg-open'
+if [ "$(uname -o)" = "Darwin" ]; then
+    alias x='open'
+else
+    alias x='xdg-open'
+fi
+
 alias lsblk='lsblk -o NAME,MAJ:MIN,SIZE,RO,TYPE,FSTYPE,UUID,MOUNTPOINT'
 alias rgrep='grep -rn --exclude-dir=.git'
 alias rg="rg --smart-case                \
@@ -36,40 +49,49 @@ alias agQ='rg -F'
 alias agJ='rg -t java'
 alias agH='rg -t haskell'
 alias iotop='sudo iotop -o'
-alias mtr='/usr/sbin/mtr --curses -d'
+alias mtr='mtr --curses --displaymode 2'
 alias dmesg='dmesg -H'
-alias dot-update='for i in ~/.vim ~/.zsh ~/.config/i3 ; do test -d $i && git -C $i pull && git -C $i submodule update; done'
+alias dot-update='for i in ~/.vim ~/.zsh ~/.config ; do test -d $i && git -C $i pull && git -C $i submodule update; done'
 alias parallel='parallel --will-cite'
 alias ip='ip -c'
 alias shutup_and_take_my_memory='prlimit -vunlimited'
 alias virsh='virsh --connect qemu:///system'
+alias mpv='mpv --no-audio-display'
+alias jmtpfs='echo "Just use adb, its 40x faster"; false'
+alias android_vnc=scrcpy
+
+# Support using Kitty with systems that don't have the terminfo installed, but only if stdin is a tty
+function ssh() {
+    # Prevent OSX from disrupting the session
+    if which caffeinate &>/dev/null ; then
+        CAF=(caffeinate -i)
+    else
+        CAF=()
+    fi
+
+    if [ -t 0 ] && [ "$TERM" = "xterm-kitty" ] && which kitty >/dev/null ; then
+        $CAF kitty +kitten ssh "$@"
+    else
+        $CAF ssh "$@"
+    fi
+}
 
 # Stack aliases
 alias sb='nice stack build'
+alias sdb='nice stack --docker build'
+alias sbf='nice stack build --fast'
 alias sbt='nice stack test --no-run-tests'
+alias sbft='nice stack test --fast'
 alias st='nice stack test'
 alias hoogle='nice ionice -c3 stack hoogle -- server --local -p 60080'
 
-# Equo & Portage
-alias eqs='equo search'
-alias eqsh='equo match --verbose'
-alias equ="sudo nice equo upgrade --ask"
-alias equp="sudo nice equo upgrade --pretend"
-alias equk="sudo kernel-switcher switch linux-sabayon"
-alias eqc="sudo dispatch-conf"
-alias eqr="sudo equo remove --ask --deep"
-alias eqf="equo query files"
-alias eqb="equo query belongs"
-alias spmsync="sudo equo rescue spmsync --ask"
-alias spmup='nice sudo emerge -avuNt $(equo query revisions 9999 -q)'
-alias mpv='mpv --no-audio-display'
+# Cargo aliases
+alias cb='cargo build'
+alias cr='cargo run'
+alias cD='cargo doc --workspace --open;'
 
-function eqi() {
-    sudo nice equo install $@
-    rehash
-}
-
-alias emerge="nice emerge"
+# Needed for tmux <3.1 - https://github.com/tmux/tmux/issues/142
+alias tmux='tmux -f ~/.config/tmux/tmux.conf'
 
 # Vim aliases
 alias v="nvim"
@@ -89,8 +111,9 @@ alias gpf='git push --force-with-lease'
 alias gr='git remote'
 alias gf='git fetch'
 alias gft='git fetch --tags'
-alias gpl='git pull'
-alias gplm='git checkout master && git pull && git checkout -'
+alias gpl='git pull --prune'
+alias gplr='git pull --prune --rebase'
+alias gplm='git checkout master && git pull --prune && git checkout -'
 alias ga='git add'
 alias gap='git add -p'
 alias gsh='git show'
@@ -112,7 +135,7 @@ alias gcop='git checkout -p'
 alias gc='git commit -v'
 alias gcp='git commit -pv'
 alias gcq='git commit'
-alias gc!='env GIT_EDITOR=/bin/true git commit'
+alias gc!='git commit --no-edit'
 alias gcA='git commit --amend -v'
 alias gcA!='git commit --amend -C HEAD'
 alias gca='git commit -v -a'
@@ -139,7 +162,7 @@ alias gl-authors="git log --pretty=format:'%h %<(20)%an %<(40)%ae %s'"
 alias gm='git merge'
 alias gma='git merge --abort'
 alias gmt='git mergetool --no-prompt'
-alias gmm='env GIT_EDITOR=/bin/true git merge master'
+alias gmm='git merge master --no-edit'
 
 alias grb='git rebase'
 alias grbi='git rebase -i'
@@ -155,3 +178,42 @@ alias grh='git reset --hard'
 alias gs='git status'
 alias gss='git status -s'
 alias temps="$ paste <(cat /sys/class/thermal/thermal_zone*/type) <(cat /sys/class/thermal/thermal_zone*/temp) | column -s $'\t' -t | sed 's/\(.\)..$/.\1°C/'"
+
+function gfco() {
+    git fetch origin "$1"
+    git checkout "$1"
+}
+
+function gb-set-upstream() {
+    git branch --set-upstream-to="origin/$1" "$1"
+}
+
+function gb-default-upstream() {
+    BRANCH="$(git symbolic-ref --short HEAD)"
+    git branch --set-upstream-to="origin/$BRANCH" $BRANCH
+}
+
+function git-merge-containing() {
+    # assuming HEAD is master
+    git rev-list --merges --ancestry-path --format="%H %P" $1..HEAD | tac | while read -r merge parent1 parent2; do
+        if [ "$parent2" != "" ]; then
+            if git merge-base --is-ancestor $1 $merge && ! git merge-base --is-ancestor $1 $parent1; then
+                echo "$merge"
+                break
+            fi
+        fi
+    done
+}
+
+# Aliases for screen sharing in Wayland
+function enable_xwayland_screen_sharing() {
+    OUTPUT="$(swaymsg -t get_outputs | jq -r '.[] | select(.model == "C27HG7x") | select (.active) | .name')"
+    wf-recorder --muxer=sdl --codec=rawvideo --file=pipe:mirror --output="$OUTPUT" "$@"
+}
+
+function enable_v4l_screen_sharing() {
+    V4L_DEV="/dev/$(find /sys/devices/virtual/video4linux/ -maxdepth 1 -mindepth 1 -printf '%f\n' | head -n1)"
+    OUTPUT="$(swaymsg -t get_outputs | jq -r '.[] | select(.model == "C27HG7x") | select (.active) | .name')"
+    wf-recorder --muxer=v4l2 --codec=rawvideo --pixel-format=yuv420p --file="$V4L_DEV" --output="$OUTPUT" "$@"
+}
+

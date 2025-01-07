@@ -1,22 +1,35 @@
 #!/bin/bash
+set -e
 
-ZSH=$(dirname $(realpath $0))
-pushd $ZSH >/dev/null
+ZSH="$(dirname "$(realpath "$0")")"
+pushd "$ZSH" >/dev/null
 
-# XDG config directories
-cd ~/.config
-[ -d ~/.config/powerline ] || ln -sf $ZSH/conf/powerline
-[ -d ~/.config/git ] || ln -sf $ZSH/conf/git
-[ -d ~/.config/nvim ] || ln -sf ~/.vim
+if which apt 2>/dev/null ; then
+    # Force overwrite needed for rust packages (bat, ripgrep) on old Ubuntu releases
+    sudo apt install -y -o Dpkg::Options::="--force-overwrite" fasd powerline zsh kitty-terminfo neovim ripgrep tig fzf bat
+    curl -sSfL 'https://github.com/rdnetto/powerline-hs/releases/download/v0.1.3.0/powerline-hs-Linux-v0.1.3.0.tar.xz' | sudo tar -C /usr/bin -Jx
+fi
+
+# Make sure SSH uses TOFU (so that git clone is non-interactive)
+if [ ! -f ~/.ssh/config ]; then
+    mkdir -p ~/.ssh
+    cat <<EOF > ~/.ssh/config
+# TOFU
+Host *
+    StrictHostKeyChecking accept-new
+EOF
+fi
 
 # RC files
-cd $HOME
-ln -sf $ZSH/conf/tmux.conf .tmux.conf
-ln -sf $ZSH/conf/tigrc .tigrc
-ln -sf $ZSH/zshenv .zshenv
-ln -sf $ZSH/zshenv .zprofile
-ln -sf $ZSH/zshenv .profile
-ln -sf $ZSH/zshrc .zshrc
+cd "$HOME"
+ln -sf "$ZSH/zshenv" .zshenv
+ln -sf "$ZSH/zshenv" .zprofile
+ln -sf "$ZSH/zshenv" .profile
+ln -sf "$ZSH/zshrc" .zshrc
 
 popd >/dev/null
+
+sudo add-apt-repository ppa:aos1/diff-so-fancy
+sudo apt update
+sudo apt install diff-so-fancy
 

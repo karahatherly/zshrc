@@ -1,8 +1,6 @@
 #!/bin/bash
 
 sudo equo install zsh dev-python/pygit2 dev-python/psutil
-sudo layman -a raiagent
-sudo emerge -avt powerline-hs
 sudo eselect fontconfig enable 10-powerline-symbols.conf
 
 # change console font to one with better unicode support
