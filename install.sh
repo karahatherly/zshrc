@@ -29,17 +29,6 @@ ln -sf "$ZSH/zshrc" .zshrc
 
 popd >/dev/null
 
-# Colour scheme for Konsole
-if ! [ -d ~/.local/share/konsole/Dracula.colorscheme ] ; then
-    mkdir -p ~/.local/share/konsole
-    pushd ~/.local/share/konsole
-    curl "https://raw.githubusercontent.com/dracula/konsole/master/Dracula.colorscheme" > Dracula.colorscheme
-
-    [ -f Shell.profile ] && sed -i 's/ColorScheme.*/ColorScheme=Dracula/' Shell.profile
-
-    popd >/dev/null
-fi
-
 # XDG config directories
 [ -d ~/.config ] || git clone git@github.com:rdnetto/xdg-config.git ~/.config
 [ -d ~/.vim ] || git clone git@github.com:rdnetto/vimrc.git ~/.vim
