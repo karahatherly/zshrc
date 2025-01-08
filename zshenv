@@ -10,7 +10,7 @@ PATH="$HOME/bin/android-sdk-linux/platform-tools:${PATH}"
 # Environment
 EDITOR="nvim"
 VISUAL="nvim"
-TERMINAL=/usr/bin/konsole
+TERMINAL=/usr/bin/gnome-terminal
 
 # Fix for broken ls behaviour
 QUOTING_STYLE=literal
