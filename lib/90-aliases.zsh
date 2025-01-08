@@ -24,7 +24,7 @@ alias tcat="tail -n +0"
 
 # List direcory contents
 alias sl=ls
-alias ll='ls -lh'
+alias ll='ls -alh'
 alias la='ls -A'
 
 # Misc commands
