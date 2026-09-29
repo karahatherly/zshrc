@@ -61,20 +61,20 @@ alias jmtpfs='echo "Just use adb, its 40x faster"; false'
 alias android_vnc=scrcpy
 
 # Support using Kitty with systems that don't have the terminfo installed, but only if stdin is a tty
-function ssh() {
-    # Prevent OSX from disrupting the session
-    if which caffeinate &>/dev/null ; then
-        CAF=(caffeinate -i)
-    else
-        CAF=()
-    fi
-
-    if [ -t 0 ] && [ "$TERM" = "xterm-kitty" ] && which kitty >/dev/null ; then
-        $CAF kitty +kitten ssh "$@"
-    else
-        $CAF ssh "$@"
-    fi
-}
+#function ssh() {
+#    # Prevent OSX from disrupting the session
+#    if which caffeinate &>/dev/null ; then
+#        CAF=(caffeinate -i)
+#    else
+#        CAF=()
+#    fi
+#
+#    if [ -t 0 ] && [ "$TERM" = "xterm-kitty" ] && which kitty >/dev/null ; then
+#        $CAF kitty +kitten ssh "$@"
+#    else
+#        $CAF ssh "$@"
+#    fi
+#}
 
 # Stack aliases
 alias sb='nice stack build'
@@ -179,6 +179,8 @@ alias gs='git status'
 alias gss='git status -s'
 alias temps="$ paste <(cat /sys/class/thermal/thermal_zone*/type) <(cat /sys/class/thermal/thermal_zone*/temp) | column -s $'\t' -t | sed 's/\(.\)..$/.\1°C/'"
 
+alias dc='docker compose'
+
 function gfco() {
     git fetch origin "$1"
     git checkout "$1"
@@ -217,3 +219,8 @@ function enable_v4l_screen_sharing() {
     wf-recorder --muxer=v4l2 --codec=rawvideo --pixel-format=yuv420p --file="$V4L_DEV" --output="$OUTPUT" "$@"
 }
 
+eval "$(rbenv init -)"
+
+alias notes='nvim ~/notes/`date +%Y%m%d`.txt'
+
+alias find_beaglebone_1='sudo arp-scan -q -l --interface wlp0s20f3 | grep '48:84:9d:26:5f:58' | cut -f 1'

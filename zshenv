@@ -25,3 +25,4 @@ YSU_MODE=BESTMATCH
  [[ "$TERM" == "xterm" ]] && export TERM="xterm-256color"
 
 
+source "/home/kara/.rover/env"
